@@ -64,53 +64,192 @@ header{
     backdrop-filter:blur(10px);
 }
 
+/* NAVBAR */
+
 .navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 5%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:white;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
+
+.logo a{
+
+font-size:22px;
+font-weight:700;
+color:#0057b7;
+text-decoration:none;
+
 }
 
-.logo img{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    object-fit:cover;
-}
 
-.logo h2{
-    color:#fff;
-    font-size:20px;
-}
 
 .nav-links{
-    display:flex;
-    gap:25px;
+
+display:flex;
+gap:25px;
+list-style:none;
+
 }
+
+
+.nav-links li{
+
+position:relative;
+
+}
+
 
 .nav-links a{
-    color:#fff;
-    font-weight:500;
-    transition:.3s;
+
+text-decoration:none;
+color:#333;
+font-weight:600;
+padding:10px;
+
 }
+
+
 
 .nav-links a:hover{
-    color:#F4C430;
+
+color:#0057b7;
+
 }
 
-.menu-btn{
-    display:none;
-    color:#fff;
-    font-size:28px;
-    cursor:pointer;
+
+
+/* DROPDOWN */
+
+.dropdown-menu{
+
+position:absolute;
+top:45px;
+left:0;
+
+background:white;
+
+width:200px;
+
+display:none;
+
+list-style:none;
+
+padding:10px 0;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+border-radius:10px;
+
 }
 
+
+.dropdown-menu li{
+
+padding:8px 15px;
+
+}
+
+
+
+.dropdown:hover .dropdown-menu{
+
+display:block;
+
+}
+
+
+
+/* APPLY BUTTON */
+
+.apply-btn{
+
+background:#0057b7;
+color:white !important;
+
+padding:12px 20px !important;
+
+border-radius:30px;
+
+}
+
+
+.apply-btn:hover{
+
+background:#003d80;
+
+}
+
+
+
+/* MOBILE BUTTON */
+
+.menu-toggle{
+
+display:none;
+
+font-size:28px;
+
+cursor:pointer;
+
+}
+
+
+
+
+@media(max-width:768px){
+
+
+.menu-toggle{
+
+display:block;
+
+}
+
+
+.nav-links{
+
+position:absolute;
+
+top:70px;
+left:0;
+
+width:100%;
+
+background:white;
+
+flex-direction:column;
+
+display:none;
+
+padding:20px;
+
+}
+
+
+
+.nav-links.active{
+
+display:flex;
+
+}
+
+
+.dropdown-menu{
+
+position:static;
+
+box-shadow:none;
+
+}
+
+
+}
 /*==========================
     HERO
 ==========================*/
