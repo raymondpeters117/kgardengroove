@@ -205,4 +205,35 @@ hiddenElements.forEach(el=>{
 
     observer.observe(el);
 
-});
+})
+    let ticker =
+document.getElementById("newsTicker");
+
+
+let announcements =
+JSON.parse(localStorage.getItem("announcements")) || [];
+
+
+
+if(announcements.length > 0){
+
+
+ticker.innerHTML =
+announcements.map(news =>
+
+"📢 " + news.title + 
+" - " +
+news.text
+
+).join(" | ");
+
+
+}
+    else{
+
+
+ticker.innerHTML =
+"No new announcements";
+
+
+};
