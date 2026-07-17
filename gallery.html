@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | K. Garden Groove College Buddo</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+🎓 K. Garden Groove College Buddo
+</div>
+
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="academics.html">Academics</a></li>
+
+<li><a href="admissions.html">Admissions</a></li>
+
+<li><a href="gallery.html" class="active">Gallery</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+
+
+</nav>
+
+</header>
+
+
+
+
+
+
+
+<!-- HERO SECTION -->
+
+<section class="gallery-hero">
+
+
+<div class="hero-content">
+
+
+<h1>School Gallery</h1>
+
+
+<p>
+Explore memorable moments, achievements and activities at our school.
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- FEATURED MOMENTS -->
+
+
+<section class="about-section">
+
+
+<h2>Our School Moments</h2>
+
+
+<p>
+
+From classroom learning to sports, celebrations and innovation,
+our gallery captures the experiences that make K. Garden Groove
+College Buddo special.
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- FILTER BUTTONS -->
+
+<section class="gallery-section">
+
+
+<h2>Explore Our Gallery</h2>
+
+
+
+<div class="filter-buttons">
+
+
+<button onclick="filterGallery('all')">
+All
+</button>
+
+
+<button onclick="filterGallery('academic')">
+Academics
+</button>
+
+
+<button onclick="filterGallery('sports')">
+Sports
+</button>
+
+
+<button onclick="filterGallery('events')">
+Events
+</button>
+
+
+<button onclick="filterGallery('life')">
+School Life
+</button>
+
+
+<button onclick="filterGallery('environment')">
+Environment
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- GALLERY GRID -->
+
+
+<div class="gallery-grid">
+
+
+
+<div class="gallery-item academic">
+
+<img src="images/classroom.jpg" onclick="openLightbox(this.src)">
+
+<h4>Classroom Learning</h4>
+
+</div>
+
+
+
+
+<div class="gallery-item academic">
+
+<img src="images/laboratory.jpg" onclick="openLightbox(this.src)">
+
+<h4>Science Laboratory</h4>
+
+</div>
+
+
+
+
+
+<div class="gallery-item sports">
+
+<img src="images/sports.jpg" onclick="openLightbox(this.src)">
+
+<h4>Sports Activities</h4>
+
+</div>
+
+
+
+
+
+<div class="gallery-item events">
+
+<img src="images/graduation.jpg" onclick="openLightbox(this.src)">
+
+<h4>Graduation Ceremony</h4>
+
+</div>
+
+
+
+
+
+<div class="gallery-item life">
+
+<img src="images/students.jpg" onclick="openLightbox(this.src)">
+
+<h4>Student Life</h4>
+
+</div>
+
+
+
+
+
+<div class="gallery-item environment">
+
+<img src="images/school.jpg" onclick="openLightbox(this.src)">
+
+<h4>School Environment</h4>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- LIGHTBOX -->
+
+
+<div class="lightbox" id="lightbox">
+
+
+<span onclick="closeLightbox()">
+✖
+</span>
+
+
+<img id="lightboxImage">
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- VISIT SECTION -->
+
+
+<section class="cta">
+
+
+<h2>Experience Our School</h2>
+
+
+<p>
+
+Visit K. Garden Groove College Buddo and discover
+a place where learners grow, achieve and succeed.
+
+</p>
+
+
+<a href="contact.html" class="btn">
+Contact Us
+</a>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- FOOTER -->
+
+
+<footer>
+
+
+<h3>
+K. Garden Groove College Buddo
+</h3>
+
+
+<p>
+Building tomorrow's leaders today
+</p>
+
+
+
+<div class="social">
+
+<a href="#">
+Facebook
+</a>
+
+
+<a href="#">
+WhatsApp
+</a>
+
+
+<a href="#">
+YouTube
+</a>
+
+
+</div>
+
+
+
+<p>
+© 2026 K. Garden Groove College Buddo. All Rights Reserved.
+</p>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+// MOBILE MENU
+
+const menuBtn=document.getElementById("menuBtn");
+
+const navLinks=document.querySelector(".nav-links");
+
+
+menuBtn.onclick=()=>{
+
+navLinks.classList.toggle("show");
+
+};
+
+
+
+
+
+
+// FILTER GALLERY
+
+
+function filterGallery(category){
+
+
+let items=document.querySelectorAll(".gallery-item");
+
+
+items.forEach(item=>{
+
+
+if(category==="all" || item.classList.contains(category)){
+
+
+item.style.display="block";
+
+
+}
+
+else{
+
+
+item.style.display="none";
+
+
+}
+
+
+});
+
+
+}
+
+
+
+
+
+
+// LIGHTBOX
+
+
+function openLightbox(image){
+
+
+document.getElementById("lightboxImage").src=image;
+
+
+document.getElementById("lightbox").style.display="flex";
+
+
+}
+
+
+
+
+function closeLightbox(){
+
+
+document.getElementById("lightbox").style.display="none";
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

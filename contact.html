@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | K. Garden Groove College Buddo</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+🎓 K. Garden Groove College Buddo
+</div>
+
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="academics.html">Academics</a></li>
+
+<li><a href="admissions.html">Admissions</a></li>
+
+<li><a href="gallery.html">Gallery</a></li>
+
+<li><a href="contact.html" class="active">Contact</a></li>
+
+</ul>
+
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+
+
+</nav>
+
+</header>
+
+
+
+
+
+<!-- HERO SECTION -->
+
+<section class="contact-hero">
+
+<div class="hero-content">
+
+<h1>Contact Us</h1>
+
+<p>
+Get in touch with K. Garden Groove College Buddo.
+We are ready to assist you.
+</p>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!-- CONTACT INFORMATION -->
+
+<section class="contact-info">
+
+
+<h2>Get In Touch</h2>
+
+
+<div class="cards-container">
+
+
+
+<div class="info-card">
+
+<h3>📍 School Location</h3>
+
+<p>
+K. Garden Groove College Buddo<br>
+7F9C+PVR, Kimbeja Road<br>
+Nsangi, Wakiso District<br>
+Uganda
+</p>
+
+</div>
+
+
+
+
+
+<div class="info-card">
+
+<h3>📞 Phone Numbers</h3>
+
+<p>
++256 700 000000<br>
++256 780 000000
+</p>
+
+</div>
+
+
+
+
+
+<div class="info-card">
+
+<h3>📧 Email Address</h3>
+
+<p>
+info@kgardengroove.ac.ug
+</p>
+
+</div>
+
+
+
+
+
+<div class="info-card">
+
+<h3>🕒 Working Hours</h3>
+
+<p>
+Monday - Friday<br>
+8:00 AM - 5:00 PM
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- CONTACT FORM -->
+
+
+<section class="contact-form-section">
+
+
+<h2>Send Us A Message</h2>
+
+
+<form id="contactForm">
+
+
+<input type="text" 
+placeholder="Your Full Name" 
+required>
+
+
+
+<input type="email" 
+placeholder="Your Email Address" 
+required>
+
+
+
+<input type="tel" 
+placeholder="Your Phone Number">
+
+
+
+<input type="text" 
+placeholder="Subject">
+
+
+
+<textarea 
+rows="6" 
+placeholder="Write your message here..." 
+required></textarea>
+
+
+
+<button type="submit" class="btn">
+Send Message
+</button>
+
+
+</form>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- GOOGLE MAP -->
+
+<section class="map-section">
+
+
+<h2>Find Our School</h2>
+
+
+<iframe
+
+src="https://www.google.com/maps?q=7F9C%2BPVR%2C%20Kimbeja%20Road%2C%20Nsangi&output=embed"
+
+width="100%"
+
+height="400"
+
+style="border:0;"
+
+allowfullscreen=""
+
+loading="lazy">
+
+</iframe>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- SOCIAL MEDIA -->
+
+<section class="social-section">
+
+
+<h2>Connect With Us</h2>
+
+
+<div class="social">
+
+
+<a href="#">
+Facebook
+</a>
+
+
+<a href="#">
+WhatsApp
+</a>
+
+
+<a href="#">
+YouTube
+</a>
+
+
+<a href="#">
+Instagram
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- WHATSAPP FLOATING BUTTON -->
+
+<a href="https://wa.me/256700000000" class="whatsapp">
+
+💬 Chat With Us
+
+</a>
+
+
+
+
+
+
+
+
+<!-- FOOTER -->
+
+
+<footer>
+
+
+<h3>
+K. Garden Groove College Buddo
+</h3>
+
+
+<p>
+Building tomorrow's leaders today
+</p>
+
+
+<div class="social">
+
+
+<a href="#">
+Facebook
+</a>
+
+
+<a href="#">
+WhatsApp
+</a>
+
+
+<a href="#">
+YouTube
+</a>
+
+
+</div>
+
+
+
+<p>
+© 2026 K. Garden Groove College Buddo. All Rights Reserved.
+</p>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+// MOBILE MENU
+
+const menuBtn = document.getElementById("menuBtn");
+
+const navLinks = document.querySelector(".nav-links");
+
+
+menuBtn.onclick = () => {
+
+navLinks.classList.toggle("show");
+
+};
+
+
+
+
+
+
+// CONTACT FORM
+
+document
+.getElementById("contactForm")
+.addEventListener("submit", function(e){
+
+
+e.preventDefault();
+
+
+alert("Thank you! Your message has been received.");
+
+
+this.reset();
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
