@@ -445,43 +445,243 @@ box-shadow:none;
     HERO
 ==========================*/
 
+/* HERO */
+
 .hero{
-    height:100vh;
-    background:url("../images/hero.jpg") center/cover;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+
+position:relative;
+
+width:100%;
+
+height:100vh;
+
+overflow:hidden;
+
 }
 
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.55);
+
+
+.slide{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+opacity:0;
+
+transition:opacity 1.5s ease;
+
 }
+
+
+
+.slide.active{
+
+opacity:1;
+
+z-index:1;
+
+}
+
+
+
+.slide img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+animation:zoom 10s linear infinite;
+
+}
+
+
+
+@keyframes zoom{
+
+0%{
+
+transform:scale(1);
+
+}
+
+100%{
+
+transform:scale(1.1);
+
+}
+
+}
+
+
+
+/* DARK OVERLAY */
+
+.hero-overlay{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.45);
+
+z-index:2;
+
+}
+
+
+
+/* CONTENT */
 
 .hero-content{
-    position:relative;
-    color:#fff;
-    z-index:5;
-    animation:fadeUp 1s ease;
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+text-align:center;
+
+color:white;
+
+z-index:3;
+
+width:90%;
+
 }
+
+
 
 .hero-content h1{
-    font-size:28px;
-    letter-spacing:3px;
+
+font-size:65px;
+
+margin-bottom:20px;
+
+animation:fadeDown 1s;
+
 }
 
-.hero-content h2{
-    font-size:60px;
-    margin:15px 0;
+
+
+.hero-content p{
+
+font-size:24px;
+
+margin-bottom:35px;
+
+animation:fadeUp 1.2s;
+
+}
+
+
+
+.hero-btn{
+
+display:inline-block;
+
+padding:15px 40px;
+
+background:#0d6efd;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:40px;
+
+font-size:18px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+
+
+.hero-btn:hover{
+
+background:#004aad;
+
+transform:translateY(-4px);
+
+}
+
+
+
+@keyframes fadeDown{
+
+from{
+
+opacity:0;
+
+transform:translate(-50%,-70%);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translate(-50%,-50%);
+
+}
+
+}
+
+
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translate(-50%,-30%);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translate(-50%,-50%);
+
+}
+
+}
+
+
+
+@media(max-width:768px){
+
+.hero-content h1{
+
+font-size:38px;
+
 }
 
 .hero-content p{
-    font-size:20px;
+
+font-size:18px;
+
 }
 
+}
 .motto{
     color:#F4C430;
     font-weight:600;
