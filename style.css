@@ -68,34 +68,78 @@ header{
 
 .navbar{
 
+position:fixed;
+top:0;
+left:0;
+width:100%;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 40px;
-background:white;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+padding:15px 50px;
+
+background:rgba(255,255,255,0.75);
+
+backdrop-filter:blur(15px);
+
+z-index:1000;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
 
 }
 
 
-.logo a{
 
-font-size:22px;
-font-weight:700;
-color:#0057b7;
-text-decoration:none;
+/* LOGO */
+
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:12px;
 
 }
 
+
+.logo img{
+
+width:55px;
+height:55px;
+
+border-radius:50%;
+
+}
+
+
+
+.logo span{
+
+font-size:20px;
+font-weight:800;
+
+color:#004aad;
+
+}
+
+
+
+/* MENU */
 
 
 .nav-links{
 
 display:flex;
+
+align-items:center;
+
 gap:25px;
+
 list-style:none;
 
 }
+
 
 
 .nav-links li{
@@ -105,12 +149,16 @@ position:relative;
 }
 
 
+
 .nav-links a{
 
 text-decoration:none;
-color:#333;
+
+color:#222;
+
 font-weight:600;
-padding:10px;
+
+transition:.3s;
 
 }
 
@@ -118,7 +166,7 @@ padding:10px;
 
 .nav-links a:hover{
 
-color:#0057b7;
+color:#004aad;
 
 }
 
@@ -126,32 +174,173 @@ color:#0057b7;
 
 /* DROPDOWN */
 
+
 .dropdown-menu{
 
 position:absolute;
-top:45px;
+
+top:35px;
+
 left:0;
+
+width:210px;
 
 background:white;
 
-width:200px;
+border-radius:12px;
 
-display:none;
+padding:15px 0;
 
 list-style:none;
 
-padding:10px 0;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
+opacity:0;
 
-border-radius:10px;
+visibility:hidden;
+
+transform:translateY(20px);
+
+transition:.4s;
+
+
+box-shadow:0 15px 30px rgba(0,0,0,.15);
 
 }
 
 
+
 .dropdown-menu li{
 
-padding:8px 15px;
+padding:10px 20px;
+
+}
+
+
+
+.dropdown:hover .dropdown-menu{
+
+opacity:1;
+
+visibility:visible;
+
+transform:translateY(0);
+
+}
+
+
+
+
+/* APPLY BUTTON */
+
+
+.apply-btn{
+
+background:#004aad;
+
+color:white !important;
+
+padding:12px 25px;
+
+border-radius:30px;
+
+transition:.3s;
+
+}
+
+
+
+.apply-btn:hover{
+
+background:#002b6b;
+
+transform:translateY(-3px);
+
+}
+
+
+
+/* MOBILE MENU */
+
+
+.menu-toggle{
+
+display:none;
+
+cursor:pointer;
+
+}
+
+
+
+.menu-toggle i{
+
+display:block;
+
+width:30px;
+
+height:3px;
+
+background:#004aad;
+
+margin:6px;
+
+}
+
+
+
+
+@media(max-width:900px){
+
+
+.menu-toggle{
+
+display:block;
+
+}
+
+
+
+.nav-links{
+
+position:absolute;
+
+top:80px;
+
+left:0;
+
+width:100%;
+
+background:white;
+
+display:none;
+
+flex-direction:column;
+
+padding:30px;
+
+}
+
+
+
+.nav-links.active{
+
+display:flex;
+
+}
+
+
+
+.dropdown-menu{
+
+position:static;
+
+opacity:1;
+
+visibility:visible;
+
+transform:none;
+
+display:none;
 
 }
 
@@ -163,6 +352,8 @@ display:block;
 
 }
 
+
+}
 
 
 /* APPLY BUTTON */
