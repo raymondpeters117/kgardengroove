@@ -1,211 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-<title>Admin Dashboard | K. Garden Groove College Buddo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="admin.css">
+    <title>Admin Dashboard | K. Garden Groove College Buddo</title>
+
+    <link rel="stylesheet" href="admin.css">
 
 </head>
 
-
 <body>
-
 
 <div class="sidebar">
 
-<h2>🎓 Admin Panel</h2>
+    <h2>🎓 Admin Panel</h2>
 
+    <a href="#">Dashboard</a>
+    <a href="#announcements">Announcements</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#admissions">Admissions</a>
+    <a href="#messages">Messages</a>
+    <a href="#students">Students</a>
 
-<a href="#">Dashboard</a>
-
-<a href="#announcements">
-Announcements
-</a>
-
-<a href="#gallery">
-Gallery
-</a>
-
-<a href="#admissions">
-Admissions
-</a>
-
-<a href="#messages">
-Messages
-</a>
-
-<a href="#students">
-Students
-</a>
-
-
-<button onclick="logout()">
-Logout
-</button>
-
+    <button type="button" onclick="logout()">Logout</button>
 
 </div>
-
-
-
-
 
 <div class="content">
 
+    <h1>Welcome Admin</h1>
 
-<h1>
-Welcome Admin
-</h1>
+    <!-- ANNOUNCEMENTS -->
+    <section id="announcements">
 
+        <h2>📢 Manage School Announcements</h2>
 
+        <input
+            type="text"
+            id="announcementTitle"
+            placeholder="Announcement Title">
 
-<!-- ANNOUNCEMENTS MANAGEMENT -->
+        <textarea
+            id="announcementText"
+            placeholder="Write announcement here..."></textarea>
 
-<section id="announcements">
+        <button
+            type="button"
+            id="publishBtn"
+            onclick="addAnnouncement()">
+            Publish Announcement
+        </button>
 
-<h2>📢 Manage School Announcements</h2>
+        <div id="announcementList"></div>
 
+    </section>
 
-<input 
-type="text"
-id="announcementTitle"
-placeholder="Announcement title">
+    <!-- GALLERY -->
+    <section id="gallery">
 
+        <h2>📸 Gallery Management</h2>
 
-<textarea 
-id="announcementText"
-placeholder="Write announcement">
-</textarea>
+        <input
+            type="text"
+            id="image"
+            placeholder="Image URL">
 
+        <button type="button" onclick="addImage()">
+            Add Image
+        </button>
 
-<button onclick="addAnnouncement()">
-Publish Announcement
-</button>
+        <div id="galleryList"></div>
 
+    </section>
 
-<div id="announcementList"></div>
+    <!-- ADMISSIONS -->
+    <section id="admissions">
 
+        <h2>📝 Admission Applications</h2>
 
-</section>
+        <div id="applications">
+            No applications yet.
+        </div>
 
+    </section>
 
+    <!-- CONTACT MESSAGES -->
+    <section id="messages">
 
+        <h2>📩 Contact Messages</h2>
 
+        <div id="messagesList">
+            No messages yet.
+        </div>
 
+    </section>
 
-<!-- GALLERY -->
+    <!-- STUDENTS -->
+    <section id="students">
 
-<section id="gallery">
+        <h2>🎓 Student Records</h2>
 
+        <input
+            type="text"
+            id="student"
+            placeholder="Student Name">
 
-<h2>📸 Gallery Management</h2>
+        <button type="button" onclick="addStudent()">
+            Add Student
+        </button>
 
+        <ul id="studentList"></ul>
 
-<input 
-type="text"
-id="image"
-placeholder="Image URL">
-
-
-<button onclick="addImage()">
-Add Image
-</button>
-
-
-<div id="galleryList"></div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ADMISSIONS -->
-
-<section id="admissions">
-
-
-<h2>📝 Admission Applications</h2>
-
-
-<div id="applications">
-
-No applications yet.
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- MESSAGES -->
-
-<section id="messages">
-
-
-<h2>📩 Contact Messages</h2>
-
-
-<div id="messagesList">
-
-No messages yet.
+    </section>
 
 </div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- STUDENTS -->
-
-<section id="students">
-
-
-<h2>🎓 Student Records</h2>
-
-
-<input 
-id="student"
-placeholder="Student Name">
-
-
-<button onclick="addStudent()">
-Add Student
-</button>
-
-
-<ul id="studentList"></ul>
-
-
-</section>
-
-
-
-</div>
-
-
-
 
 <script src="admin.js"></script>
 
-
 </body>
-
 </html>
