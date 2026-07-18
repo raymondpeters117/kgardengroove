@@ -1,11 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+<title>Admin Login</title>
 
-<title>Admin Dashboard | K. Garden Groove College Buddo</title>
+<style>
 
-<link rel="stylesheet" href="admin.css">
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0066ff,#00c6ff);
+
+}
+
+
+.login-box{
+
+    width:350px;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+}
+
+
+.login-box h2{
+
+    text-align:center;
+    margin-bottom:25px;
+    color:#0066ff;
+
+}
+
+
+.input-box{
+
+    margin-bottom:20px;
+
+}
+
+
+.input-box input{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+
+}
+
+
+button{
+
+    width:100%;
+    padding:12px;
+    background:#0066ff;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+
+button:hover{
+
+    background:#004dcc;
+
+}
+
+
+#message{
+
+    text-align:center;
+    margin-top:15px;
+    color:red;
+
+}
+
+
+.logo{
+
+    text-align:center;
+    font-size:45px;
+    margin-bottom:10px;
+
+}
+
+
+</style>
 
 </head>
 
@@ -13,194 +109,113 @@
 <body>
 
 
-<div class="sidebar">
+<div class="login-box">
 
-<h2>🎓 Admin Panel</h2>
-
-
-<a href="#">Dashboard</a>
-
-<a href="#announcements">
-Announcements
-</a>
-
-<a href="#gallery">
-Gallery
-</a>
-
-<a href="#admissions">
-Admissions
-</a>
-
-<a href="#messages">
-Messages
-</a>
-
-<a href="#students">
-Students
-</a>
-
-
-<button onclick="logout()">
-Logout
-</button>
-
-
+<div class="logo">
+🔐
 </div>
 
 
+<h2>
+Admin Login
+</h2>
 
 
-
-<div class="content">
-
-
-<h1>
-Welcome Admin
-</h1>
-
-
-
-<!-- ANNOUNCEMENTS -->
-
-<section id="announcements">
-
-
-<h2>📢 Manage Announcements</h2>
-
+<div class="input-box">
 
 <input 
-id="news"
-placeholder="Enter announcement">
+type="text" 
+id="username"
+placeholder="Username">
 
-
-<button onclick="addNews()">
-Add News
-</button>
-
-
-<ul id="newsList"></ul>
-
-
-</section>
+</div>
 
 
 
-
-
-
-
-<!-- GALLERY -->
-
-<section id="gallery">
-
-
-<h2>📸 Gallery Management</h2>
-
+<div class="input-box">
 
 <input 
-type="text"
-id="image"
-placeholder="Image URL">
+type="password" 
+id="password"
+placeholder="Password">
+
+</div>
 
 
-<button onclick="addImage()">
-Add Image
+
+<button onclick="login()">
+Login
 </button>
 
 
-<div id="galleryList"></div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ADMISSIONS -->
-
-<section id="admissions">
-
-
-<h2>📝 Admission Applications</h2>
-
-
-<div id="applications">
-
-No applications yet.
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- MESSAGES -->
-
-<section id="messages">
-
-
-<h2>📩 Contact Messages</h2>
-
-
-<div id="messagesList">
-
-No messages yet.
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- STUDENTS -->
-
-<section id="students">
-
-
-<h2>🎓 Student Records</h2>
-
-
-<input 
-id="student"
-placeholder="Student Name">
-
-
-<button onclick="addStudent()">
-Add Student
-</button>
-
-
-<ul id="studentList"></ul>
-
-
-</section>
-
+<p id="message"></p>
 
 
 </div>
 
 
 
+<script>
 
-<script src="admin.js"></script>
+
+// DEFAULT ADMIN ACCOUNT
+
+let admin = {
+
+username:"admin",
+password:"12345"
+
+};
+
+
+
+// LOGIN FUNCTION
+
+function login(){
+
+
+let username =
+document.getElementById("username").value;
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+if(username === admin.username &&
+password === admin.password){
+
+
+
+localStorage.setItem(
+"adminLogin",
+"true"
+);
+
+
+
+window.location="admin.html";
+
+
+}
+
+else{
+
+
+document.getElementById("message").innerHTML =
+"Invalid username or password";
+
+
+}
+
+
+}
+
+
+
+</script>
 
 
 </body>
-
 </html>
