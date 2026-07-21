@@ -1,602 +1,502 @@
-/* ================================
-   GLOBAL SETTINGS
-================================ */
+<!DOCTYPE html>
+<html lang="en">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+<head>
 
-body{
-    background:#f4f7fb;
-    color:#333;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-html{
-    scroll-behavior:smooth;
-}
+<title>Contact Us | K. Garden Groove College Buddo</title>
 
-a{
-    text-decoration:none;
-}
+<link rel="stylesheet" href="contact.css">
+<link rel="icon" type="Badge.jpg" href="Badge.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+</head>
 
 
-/* ================================
-   NAVBAR
-================================ */
+<body>
 
-.navbar{
 
-    width:100%;
-    background:#003366;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 7%;
-    position:sticky;
-    top:0;
-    z-index:1000;
+<!-- NAVIGATION -->
 
-}
+<header class="navbar">
 
+    <div class="logo">
+        <img src="Badge.jpg" alt="School Logo">
+        <span>K.GARDEN GROOVE COLLEGE</span>
+    </div>
 
-/* LOGO */
 
-.logo{
+    <nav>
 
-    display:flex;
-    align-items:center;
-    gap:12px;
-    color:white;
-    font-size:20px;
-    font-weight:700;
+        <ul class="nav-links" id="navLinks">
 
-}
 
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
 
-.logo img{
 
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    object-fit:cover;
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
 
-}
 
+            <!-- DROPDOWN -->
 
+            <li class="dropdown">
 
-/* NAV LINKS */
+                <a href="#">
+                    Academics <span>⌄</span>
+                </a>
 
-.nav-links{
 
-    display:flex;
-    align-items:center;
-    gap:25px;
-    list-style:none;
+                <ul class="dropdown-menu">
 
-}
 
+                    <li>
+                        <a href="academics.html">
+                            Departments
+                        </a>
+                    </li>
 
-.nav-links li{
 
-    position:relative;
+                    <li>
+                        <a href="subjects.html">
+                            Subjects
+                        </a>
+                    </li>
 
-}
 
+                    <li>
+                        <a href="admissions.html">
+                            Admissions
+                        </a>
+                    </li>
 
 
-.nav-links a{
+                </ul>
 
-    color:white;
-    font-weight:500;
-    transition:.3s;
 
-}
+            </li>
 
 
-.nav-links a:hover{
 
-    color:#ffd700;
+            <li>
+                <a href="gallery.html">
+                    Gallery
+                </a>
+            </li>
 
-}
 
 
-/* APPLY BUTTON */
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
 
-.apply-btn{
 
-    background:#ffd700;
-    color:#003366!important;
-    padding:10px 20px;
-    border-radius:30px;
-    font-weight:bold;
 
-}
+            <li>
+                <a href="admin-login.html">
+                    Admin
+                </a>
+            </li>
 
 
-.apply-btn:hover{
 
-    background:white;
+            <li>
+                <a href="admissions.html" class="apply-btn">
+                    Apply Now
+                </a>
+            </li>
 
-}
 
+        </ul>
 
+    </nav>
 
-/* ================================
-   DROPDOWN MENU
-================================ */
 
 
-.dropdown-menu{
+    <!-- MOBILE ICON -->
 
-    position:absolute;
-    top:35px;
-    left:0;
-    background:white;
-    width:180px;
-    list-style:none;
-    display:none;
-    border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-    overflow:hidden;
+    <div class="menu-toggle" id="menuToggle">
 
-}
+        <i></i>
+        <i></i>
+        <i></i>
 
+    </div>
 
-.dropdown-menu li{
 
-    padding:12px;
+</header>
 
-}
 
 
-.dropdown-menu a{
 
-    color:#003366;
+<!-- HERO SECTION -->
 
-}
+<section class="contact-hero">
 
+    <img src="ChatGPT Image Jul 20, 2026, 01_05_11 PM.png" class="hero-image" alt="K Garden Groove College">
 
-.dropdown-menu li:hover{
+    <div class="hero-overlay"></div>
 
-    background:#eee;
+    <div class="hero-content">
 
-}
+        <h1>Contact Us</h1>
 
+        <p>
+            Get in touch with K. Garden Groove College Buddo.
+            We are ready to assist you.
+        </p>
 
-.dropdown:hover .dropdown-menu{
+    </div>
 
-    display:block;
+</section>
 
-}
 
 
 
 
-/* MOBILE MENU ICON */
 
-.menu-toggle{
+<!-- CONTACT INFORMATION -->
 
-    display:none;
-    cursor:pointer;
+<section class="contact-info">
 
-}
 
+<h2>Get In Touch</h2>
 
-.menu-toggle i{
 
-    display:block;
-    width:30px;
-    height:3px;
-    background:white;
-    margin:6px;
+<div class="cards-container">
 
-}
 
 
+<div class="info-card">
 
+<h3>📍 School Location</h3>
 
-/* ================================
- HERO SECTION
-================================ */
+<p>
+K. Garden Groove College Buddo<br>
+7F9C+PVR, Kimbeja Road<br>
+Nsangi, Wakiso District<br>
+Uganda
+</p>
 
+</div>
 
-.contact-hero{
 
-    height:450px;
-    position:relative;
 
-}
 
 
-.hero-image{
+<div class="info-card">
 
-    width:100%;
-    height:100%;
-    object-fit:cover;
+<h3>📞 Phone Numbers</h3>
 
-}
+<p>
++256 700 000000<br>
++256 780 000000
+</p>
 
+</div>
 
-.hero-overlay{
 
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.55);
 
-}
 
 
+<div class="info-card">
 
-.hero-content{
+<h3>📧 Email Address</h3>
 
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    color:white;
-    text-align:center;
+<p>
+info@kgardengroove.ac.ug
+</p>
 
-}
+</div>
 
 
-.hero-content h1{
 
-    font-size:55px;
 
-}
 
+<div class="info-card">
 
-.hero-content p{
+<h3>🕒 Working Hours</h3>
 
-    font-size:18px;
-    max-width:600px;
+<p>
+Monday - Friday<br>
+8:00 AM - 5:00 PM
+</p>
 
-}
+</div>
 
 
 
+</div>
 
 
-/* ================================
- CONTACT INFORMATION
-================================ */
+</section>
 
 
-.contact-info{
 
-    padding:60px 8%;
-    text-align:center;
 
-}
 
 
-.contact-info h2,
-.contact-form-section h2,
-.map-section h2,
-.social-section h2{
 
-    color:#003366;
-    font-size:35px;
-    margin-bottom:30px;
 
-}
+<!-- CONTACT FORM -->
 
 
+<section class="contact-form-section">
 
-.cards-container{
 
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+<h2>Send Us A Message</h2>
 
-}
 
+<form id="contactForm">
 
 
-.info-card{
+<input type="text" 
+placeholder="Your Full Name" 
+required>
 
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.12);
-    transition:.3s;
 
-}
 
+<input type="email" 
+placeholder="Your Email Address" 
+required>
 
 
-.info-card:hover{
 
-    transform:translateY(-10px);
+<input type="tel" 
+placeholder="Your Phone Number">
 
-}
 
 
-.info-card h3{
+<input type="text" 
+placeholder="Subject">
 
-    color:#003366;
-    margin-bottom:15px;
 
-}
 
+<textarea 
+rows="6" 
+placeholder="Write your message here..." 
+required></textarea>
 
 
 
+<button type="submit" class="btn">
+Send Message
+</button>
 
-/* ================================
- CONTACT FORM
-================================ */
 
+</form>
 
-.contact-form-section{
 
-    background:white;
-    padding:60px 8%;
-    text-align:center;
+</section>
 
-}
 
 
 
-#contactForm{
 
-    max-width:700px;
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
 
-}
 
 
+<!-- GOOGLE MAP -->
 
-#contactForm input,
-#contactForm textarea{
+<section class="map-section">
 
-    width:100%;
-    padding:15px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
 
-}
+<h2>Find Our School</h2>
 
 
+<iframe
 
-#contactForm input:focus,
-#contactForm textarea:focus{
+src="https://www.google.com/maps?q=7F9C%2BPVR%2C%20Kimbeja%20Road%2C%20Nsangi&output=embed"
 
-    border-color:#003366;
-    outline:none;
+width="100%"
 
-}
+height="400"
 
+style="border:0;"
 
+allowfullscreen=""
 
-.btn{
+loading="lazy">
 
-    background:#003366;
-    color:white;
-    padding:15px;
-    border:none;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:17px;
+</iframe>
 
-}
 
+</section>
 
-.btn:hover{
 
-    background:#ffd700;
-    color:#003366;
 
-}
 
 
 
 
 
-/* ================================
- MAP
-================================ */
+<!-- SOCIAL MEDIA -->
 
+<section class="social-section">
 
-.map-section{
 
-    padding:60px 8%;
-    text-align:center;
+<h2>Connect With Us</h2>
 
-}
 
+<div class="social">
 
-.map-section iframe{
 
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.2);
+<a href="#">
+Facebook
+</a>
 
-}
 
+<a href="#">
+WhatsApp
+</a>
 
 
+<a href="#">
+YouTube
+</a>
 
-/* ================================
- SOCIAL
-================================ */
 
+<a href="#">
+Instagram
+</a>
 
-.social-section{
 
-    background:#003366;
-    color:white;
-    text-align:center;
-    padding:50px;
+</div>
 
-}
 
+</section>
 
 
-.social-section h2{
 
-    color:white;
 
-}
 
 
-.social{
 
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
 
-}
+<!-- WHATSAPP FLOATING BUTTON -->
 
+<a href="https://wa.me/256700000000" class="whatsapp">
 
-.social a{
+💬 Chat With Us
 
-    background:white;
-    color:#003366;
-    padding:12px 25px;
-    border-radius:30px;
+</a>
 
-}
 
 
 
-.social a:hover{
 
-    background:#ffd700;
 
-}
 
 
+<!-- FOOTER -->
 
 
+<footer>
 
-/* ================================
- WHATSAPP BUTTON
-================================ */
 
+<h3>
+K. Garden Groove College Buddo
+</h3>
 
-.whatsapp{
 
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    background:#25D366;
-    color:white;
-    padding:15px 25px;
-    border-radius:50px;
-    font-weight:bold;
-    z-index:999;
+<p>
+Building tomorrow's leaders today
+</p>
 
-}
 
+<div class="social">
 
-.whatsapp:hover{
 
-    background:#128C7E;
+<a href="#">
+Facebook
+</a>
 
-}
 
+<a href="#">
+WhatsApp
+</a>
 
 
+<a href="#">
+YouTube
+</a>
 
-/* ================================
- FOOTER
-================================ */
 
+</div>
 
-footer{
 
-    background:#001a33;
-    color:white;
-    text-align:center;
-    padding:40px;
 
-}
+<p>
+© 2026 K. Garden Groove College Buddo. All Rights Reserved.
+</p>
 
 
-footer h3{
+</footer>
 
-    font-size:25px;
 
-}
 
 
 
 
-/* ================================
- MOBILE RESPONSIVE
-================================ */
 
 
-@media(max-width:900px){
 
+<script>
 
-.nav-links{
 
-    position:absolute;
-    top:80px;
-    left:0;
-    width:100%;
-    background:#003366;
-    flex-direction:column;
-    padding:25px;
-    display:none;
+// MOBILE MENU
 
-}
+const menuBtn = document.getElementById("menuBtn");
 
+const navLinks = document.querySelector(".nav-links");
 
-.nav-links.active{
 
-    display:flex;
+menuBtn.onclick = () => {
 
-}
+navLinks.classList.toggle("show");
 
+};
 
-.menu-toggle{
 
-    display:block;
 
-}
 
 
 
-.dropdown-menu{
+// CONTACT FORM
 
-    position:static;
-    width:100%;
+document
+.getElementById("contactForm")
+.addEventListener("submit", function(e){
 
-}
 
+e.preventDefault();
 
-.dropdown:hover .dropdown-menu{
 
-    display:block;
+alert("Thank you! Your message has been received.");
 
-}
 
+this.reset();
 
 
-.logo span{
+});
 
-    font-size:14px;
 
-}
 
+</script>
 
 
-.hero-content h1{
 
-    font-size:38px;
+</body>
 
-}
-
-
-}
+</html> 
