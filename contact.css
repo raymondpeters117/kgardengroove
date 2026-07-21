@@ -1,6 +1,6 @@
-/* ===============================
+/* ================================
    GLOBAL SETTINGS
-================================*/
+================================ */
 
 *{
     margin:0;
@@ -9,70 +9,86 @@
     font-family:'Poppins',sans-serif;
 }
 
-
 body{
-    background:#f5f7fb;
+    background:#f4f7fb;
     color:#333;
-    line-height:1.6;
 }
-
 
 html{
     scroll-behavior:smooth;
 }
 
-
 a{
     text-decoration:none;
-    color:inherit;
 }
 
 
 
-/* ===============================
-        NAVIGATION
-================================*/
-
-header{
-    background:#003366;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
+/* ================================
+   NAVBAR
+================================ */
 
 .navbar{
 
+    width:100%;
+    background:#003366;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 8%;
+    padding:15px 7%;
+    position:sticky;
+    top:0;
+    z-index:1000;
 
 }
 
 
+/* LOGO */
 
 .logo{
 
+    display:flex;
+    align-items:center;
+    gap:12px;
     color:white;
-    font-size:22px;
+    font-size:20px;
     font-weight:700;
 
 }
 
 
+.logo img{
 
-.nav-links{
-
-    display:flex;
-    list-style:none;
-    gap:25px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
 
 }
 
 
 
-.nav-links li a{
+/* NAV LINKS */
+
+.nav-links{
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+    list-style:none;
+
+}
+
+
+.nav-links li{
+
+    position:relative;
+
+}
+
+
+
+.nav-links a{
 
     color:white;
     font-weight:500;
@@ -81,38 +97,117 @@ header{
 }
 
 
-.nav-links li a:hover,
-.nav-links .active{
+.nav-links a:hover{
 
     color:#ffd700;
 
 }
 
 
+/* APPLY BUTTON */
 
-.menu-btn{
+.apply-btn{
 
+    background:#ffd700;
+    color:#003366!important;
+    padding:10px 20px;
+    border-radius:30px;
+    font-weight:bold;
+
+}
+
+
+.apply-btn:hover{
+
+    background:white;
+
+}
+
+
+
+/* ================================
+   DROPDOWN MENU
+================================ */
+
+
+.dropdown-menu{
+
+    position:absolute;
+    top:35px;
+    left:0;
+    background:white;
+    width:180px;
+    list-style:none;
     display:none;
-    color:white;
-    font-size:30px;
-    cursor:pointer;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    overflow:hidden;
+
+}
+
+
+.dropdown-menu li{
+
+    padding:12px;
+
+}
+
+
+.dropdown-menu a{
+
+    color:#003366;
+
+}
+
+
+.dropdown-menu li:hover{
+
+    background:#eee;
+
+}
+
+
+.dropdown:hover .dropdown-menu{
+
+    display:block;
 
 }
 
 
 
 
+/* MOBILE MENU ICON */
 
-/* ===============================
-        HERO SECTION
-================================*/
+.menu-toggle{
+
+    display:none;
+    cursor:pointer;
+
+}
+
+
+.menu-toggle i{
+
+    display:block;
+    width:30px;
+    height:3px;
+    background:white;
+    margin:6px;
+
+}
+
+
+
+
+/* ================================
+ HERO SECTION
+================================ */
 
 
 .contact-hero{
 
     height:450px;
     position:relative;
-    overflow:hidden;
 
 }
 
@@ -124,7 +219,6 @@ header{
     object-fit:cover;
 
 }
-
 
 
 .hero-overlay{
@@ -143,8 +237,8 @@ header{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    text-align:center;
     color:white;
+    text-align:center;
 
 }
 
@@ -152,7 +246,6 @@ header{
 .hero-content h1{
 
     font-size:55px;
-    margin-bottom:15px;
 
 }
 
@@ -168,9 +261,9 @@ header{
 
 
 
-/* ===============================
-        CONTACT INFO
-================================*/
+/* ================================
+ CONTACT INFORMATION
+================================ */
 
 
 .contact-info{
@@ -181,18 +274,16 @@ header{
 }
 
 
-
 .contact-info h2,
 .contact-form-section h2,
 .map-section h2,
 .social-section h2{
 
-    font-size:35px;
     color:#003366;
-    margin-bottom:35px;
+    font-size:35px;
+    margin-bottom:30px;
 
 }
-
 
 
 
@@ -211,7 +302,7 @@ header{
     background:white;
     padding:30px;
     border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.1);
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
     transition:.3s;
 
 }
@@ -225,7 +316,6 @@ header{
 }
 
 
-
 .info-card h3{
 
     color:#003366;
@@ -235,9 +325,11 @@ header{
 
 
 
-/* ===============================
-        CONTACT FORM
-================================*/
+
+
+/* ================================
+ CONTACT FORM
+================================ */
 
 
 .contact-form-section{
@@ -249,13 +341,14 @@ header{
 }
 
 
+
 #contactForm{
 
     max-width:700px;
     margin:auto;
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:15px;
 
 }
 
@@ -264,11 +357,11 @@ header{
 #contactForm input,
 #contactForm textarea{
 
+    width:100%;
     padding:15px;
     border:1px solid #ccc;
-    border-radius:8px;
+    border-radius:10px;
     font-size:16px;
-    outline:none;
 
 }
 
@@ -278,6 +371,7 @@ header{
 #contactForm textarea:focus{
 
     border-color:#003366;
+    outline:none;
 
 }
 
@@ -287,15 +381,13 @@ header{
 
     background:#003366;
     color:white;
-    border:none;
     padding:15px;
+    border:none;
     border-radius:30px;
-    font-size:17px;
     cursor:pointer;
-    transition:.3s;
+    font-size:17px;
 
 }
-
 
 
 .btn:hover{
@@ -309,9 +401,9 @@ header{
 
 
 
-/* ===============================
-        MAP SECTION
-================================*/
+/* ================================
+ MAP
+================================ */
 
 
 .map-section{
@@ -320,7 +412,6 @@ header{
     text-align:center;
 
 }
-
 
 
 .map-section iframe{
@@ -333,18 +424,17 @@ header{
 
 
 
-
-/* ===============================
-        SOCIAL MEDIA
-================================*/
+/* ================================
+ SOCIAL
+================================ */
 
 
 .social-section{
 
-    text-align:center;
-    padding:50px 8%;
     background:#003366;
     color:white;
+    text-align:center;
+    padding:50px;
 
 }
 
@@ -357,7 +447,6 @@ header{
 }
 
 
-
 .social{
 
     display:flex;
@@ -368,15 +457,12 @@ header{
 }
 
 
-
 .social a{
 
     background:white;
     color:#003366;
     padding:12px 25px;
     border-radius:30px;
-    font-weight:600;
-    transition:.3s;
 
 }
 
@@ -385,7 +471,6 @@ header{
 .social a:hover{
 
     background:#ffd700;
-    transform:scale(1.1);
 
 }
 
@@ -393,9 +478,9 @@ header{
 
 
 
-/* ===============================
-        WHATSAPP BUTTON
-================================*/
+/* ================================
+ WHATSAPP BUTTON
+================================ */
 
 
 .whatsapp{
@@ -408,11 +493,9 @@ header{
     padding:15px 25px;
     border-radius:50px;
     font-weight:bold;
-    box-shadow:0 5px 20px rgba(0,0,0,.3);
     z-index:999;
 
 }
-
 
 
 .whatsapp:hover{
@@ -424,10 +507,9 @@ header{
 
 
 
-
-/* ===============================
-        FOOTER
-================================*/
+/* ================================
+ FOOTER
+================================ */
 
 
 footer{
@@ -435,7 +517,7 @@ footer{
     background:#001a33;
     color:white;
     text-align:center;
-    padding:40px 8%;
+    padding:40px;
 
 }
 
@@ -443,64 +525,42 @@ footer{
 footer h3{
 
     font-size:25px;
-    margin-bottom:10px;
-
-}
-
-
-
-footer .social{
-
-    margin:20px 0;
-
-}
-
-
-
-footer .social a{
-
-    padding:8px 18px;
-    font-size:14px;
 
 }
 
 
 
 
+/* ================================
+ MOBILE RESPONSIVE
+================================ */
 
-/* ===============================
-        MOBILE DESIGN
-================================*/
 
-
-@media(max-width:768px){
+@media(max-width:900px){
 
 
 .nav-links{
 
     position:absolute;
-    top:70px;
+    top:80px;
     left:0;
     width:100%;
     background:#003366;
     flex-direction:column;
-    text-align:center;
-    padding:20px;
+    padding:25px;
     display:none;
 
 }
 
 
-
-.nav-links.show{
+.nav-links.active{
 
     display:flex;
 
 }
 
 
-
-.menu-btn{
+.menu-toggle{
 
     display:block;
 
@@ -508,9 +568,25 @@ footer .social a{
 
 
 
-.logo{
+.dropdown-menu{
 
-    font-size:16px;
+    position:static;
+    width:100%;
+
+}
+
+
+.dropdown:hover .dropdown-menu{
+
+    display:block;
+
+}
+
+
+
+.logo span{
+
+    font-size:14px;
 
 }
 
@@ -519,14 +595,6 @@ footer .social a{
 .hero-content h1{
 
     font-size:38px;
-
-}
-
-
-
-.hero-content p{
-
-    font-size:15px;
 
 }
 
