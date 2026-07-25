@@ -141,3 +141,75 @@ function logout(){
     window.location.href = "admin-login.html";
 
 }
+function loadApplications(){
+
+    const container = document.getElementById("applications");
+
+    const applications =
+    JSON.parse(localStorage.getItem("applications")) || [];
+
+    if(applications.length === 0){
+
+        container.innerHTML = "<p>No admission applications yet.</p>";
+
+        return;
+
+    }
+
+    container.innerHTML = "";
+
+    applications.forEach((app,index)=>{
+
+        container.innerHTML += `
+
+        <div class="application-card">
+
+            <h3>${app.studentName}</h3>
+
+            <p><strong>Class:</strong> ${app.classApplying}</p>
+
+            <p><strong>Gender:</strong> ${app.gender}</p>
+
+            <p><strong>Date of Birth:</strong> ${app.dob}</p>
+
+            <p><strong>Parent:</strong> ${app.parentName}</p>
+
+            <p><strong>Phone:</strong> ${app.phone}</p>
+
+            <p><strong>Email:</strong> ${app.email}</p>
+
+            <p><strong>Previous School:</strong> ${app.previousSchool}</p>
+
+            <p><strong>Information:</strong> ${app.information}</p>
+
+            <p><strong>Submitted:</strong> ${app.submitted}</p>
+
+            <button onclick="deleteApplication(${index})">
+                Delete
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function deleteApplication(index){
+
+    let applications =
+    JSON.parse(localStorage.getItem("applications")) || [];
+
+    applications.splice(index,1);
+
+    localStorage.setItem(
+        "applications",
+        JSON.stringify(applications)
+    );
+
+    loadApplications();
+
+}
+
+loadApplications();
