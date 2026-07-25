@@ -220,30 +220,46 @@ Complete registration and prepare to begin learning.
 
 
 
+<!-- ================= APPLICATION ================= -->
+
+<section class="application" id="application">
+
+<h2>Online Admission Form</h2>
+
+
 <form id="admissionForm">
 
-<input
+
+<input 
 type="text"
 id="studentName"
 placeholder="Student Full Name"
 required>
 
-<input
+
+<input 
 type="date"
 id="dob"
 required>
 
-<select
-id="gender"
-required>
 
-<option value="">Select Gender</option>
+<select id="gender" required>
 
-<option value="Male">Male</option>
+<option value="">
+Select Gender
+</option>
 
-<option value="Female">Female</option>
+<option value="Male">
+Male
+</option>
+
+<option value="Female">
+Female
+</option>
 
 </select>
+
+
 
 <input
 type="text"
@@ -251,22 +267,28 @@ id="parentName"
 placeholder="Parent/Guardian Name"
 required>
 
+
+
 <input
 type="tel"
 id="phone"
 placeholder="Phone Number"
 required>
 
+
+
 <input
 type="email"
 id="email"
 placeholder="Email Address">
 
-<select
-id="classApplying"
-required>
 
-<option value="">Select Class Applying For</option>
+
+<select id="classApplying" required>
+
+<option value="">
+Select Class Applying For
+</option>
 
 <option>Senior One</option>
 <option>Senior Two</option>
@@ -277,20 +299,33 @@ required>
 
 </select>
 
+
+
 <input
 type="text"
 id="previousSchool"
 placeholder="Previous School">
 
+
+
 <textarea
 id="information"
 placeholder="Additional Information"></textarea>
 
-<button type="submit" class="btn">
+
+
+<button 
+type="submit"
+class="btn">
+
 Submit Application
+
 </button>
 
+
 </form>
+
+
 </section>
 
 
@@ -480,126 +515,137 @@ YouTube
 
 
 
-
-
 <script>
-
 
 // ==========================
 // MOBILE MENU
 // ==========================
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.querySelector(".nav-links");
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+
+const navLinks =
+document.querySelector(".nav-links");
+
 
 if(menuBtn){
 
-    menuBtn.onclick = () => {
-        navLinks.classList.toggle("show");
-    };
+menuBtn.onclick=function(){
+
+navLinks.classList.toggle("show");
+
+}
 
 }
 
 
+
 // ==========================
-// ADMISSION APPLICATION
+// ADMISSION SUBMISSION
 // ==========================
 
-const admissionForm = document.getElementById("admissionForm");
 
-
-admissionForm.addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-
-    let application = {
-
-        studentName:
-        document.querySelector(
-        'input[placeholder="Student Full Name"]'
-        ).value,
-
-
-        dob:
-        document.querySelector(
-        'input[type="date"]'
-        ).value,
-
-
-        gender:
-        document.querySelectorAll("select")[0].value,
-
-
-        parentName:
-        document.querySelector(
-        'input[placeholder="Parent/Guardian Name"]'
-        ).value,
-
-
-        phone:
-        document.querySelector(
-        'input[placeholder="Phone Number"]'
-        ).value,
-
-
-        email:
-        document.querySelector(
-        'input[placeholder="Email Address"]'
-        ).value,
-
-
-        classApplying:
-        document.querySelectorAll("select")[1].value,
-
-
-        previousSchool:
-        document.querySelector(
-        'input[placeholder="Previous School"]'
-        ).value,
-
-
-        information:
-        document.querySelector(
-        "textarea"
-        ).value,
-
-
-        date:
-        new Date().toLocaleString()
-
-    };
+const admissionForm =
+document.getElementById("admissionForm");
 
 
 
-    let applications =
-    JSON.parse(localStorage.getItem("applications")) || [];
+admissionForm.addEventListener(
+"submit",
+function(e){
+
+
+e.preventDefault();
 
 
 
-    applications.push(application);
+let application = {
+
+
+studentName:
+document.getElementById("studentName").value,
+
+
+dob:
+document.getElementById("dob").value,
+
+
+gender:
+document.getElementById("gender").value,
+
+
+parentName:
+document.getElementById("parentName").value,
+
+
+phone:
+document.getElementById("phone").value,
+
+
+email:
+document.getElementById("email").value,
+
+
+classApplying:
+document.getElementById("classApplying").value,
+
+
+previousSchool:
+document.getElementById("previousSchool").value,
+
+
+information:
+document.getElementById("information").value,
+
+
+date:
+new Date().toLocaleString()
+
+
+};
 
 
 
-    localStorage.setItem(
-        "applications",
-        JSON.stringify(applications)
-    );
+
+// get existing applications
+
+let applications =
+JSON.parse(
+localStorage.getItem("applications")
+) || [];
 
 
 
-    alert(
-    "Your admission application has been submitted successfully!"
-    );
+// add new application
+
+applications.push(application);
 
 
 
-    admissionForm.reset();
+// save applications
+
+localStorage.setItem(
+"applications",
+JSON.stringify(applications)
+);
+
+
+
+alert(
+"Application submitted successfully!"
+);
+
+
+
+admissionForm.reset();
+
 
 
 });
 
-
+</script>
 
 </body>
 
