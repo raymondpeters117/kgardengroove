@@ -124,3 +124,44 @@ border-radius:15px;
     color:#777;
     padding:30px;
 }
+.application-card{
+
+    background:#fff;
+    border-left:5px solid #0B7A3D;
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+.application-card h3{
+
+    color:#0B7A3D;
+    margin-bottom:10px;
+
+}
+
+.application-card p{
+
+    margin:5px 0;
+
+}
+
+.application-card button{
+
+    margin-top:15px;
+    background:#d9534f;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+.application-card button:hover{
+
+    background:#c9302c;
+
+}
