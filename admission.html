@@ -485,96 +485,119 @@ YouTube
 <script>
 
 
+// ==========================
 // MOBILE MENU
-
-const menuBtn=document.getElementById("menuBtn");
-
-const navLinks=document.querySelector(".nav-links");
-
-
-menuBtn.onclick=()=>{
-
-navLinks.classList.toggle("show");
-
-};
-
-
-
-
-// FORM MESSAGE
-
-document.getElementById("admissionForm")
-.addEventListener("submit",function(e){
-
-e.preventDefault();
-
-alert("Your admission application has been submitted successfully!");
-
-this.reset();
-
-});
-
-// =======================
-// MOBILE MENU
-// =======================
+// ==========================
 
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.querySelector(".nav-links");
 
-menuBtn.onclick = () => {
+if(menuBtn){
 
-    navLinks.classList.toggle("show");
+    menuBtn.onclick = () => {
+        navLinks.classList.toggle("show");
+    };
 
-};
+}
 
-// =======================
-// ADMISSION FORM
-// =======================
 
-document.getElementById("admissionForm").addEventListener("submit", function(e){
+// ==========================
+// ADMISSION APPLICATION
+// ==========================
+
+const admissionForm = document.getElementById("admissionForm");
+
+
+admissionForm.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    const application = {
 
-        studentName: document.getElementById("studentName").value,
+    let application = {
 
-        dob: document.getElementById("dob").value,
+        studentName:
+        document.querySelector(
+        'input[placeholder="Student Full Name"]'
+        ).value,
 
-        gender: document.getElementById("gender").value,
 
-        parentName: document.getElementById("parentName").value,
+        dob:
+        document.querySelector(
+        'input[type="date"]'
+        ).value,
 
-        phone: document.getElementById("phone").value,
 
-        email: document.getElementById("email").value,
+        gender:
+        document.querySelectorAll("select")[0].value,
 
-        classApplying: document.getElementById("classApplying").value,
 
-        previousSchool: document.getElementById("previousSchool").value,
+        parentName:
+        document.querySelector(
+        'input[placeholder="Parent/Guardian Name"]'
+        ).value,
 
-        information: document.getElementById("information").value,
 
-        submitted: new Date().toLocaleString()
+        phone:
+        document.querySelector(
+        'input[placeholder="Phone Number"]'
+        ).value,
+
+
+        email:
+        document.querySelector(
+        'input[placeholder="Email Address"]'
+        ).value,
+
+
+        classApplying:
+        document.querySelectorAll("select")[1].value,
+
+
+        previousSchool:
+        document.querySelector(
+        'input[placeholder="Previous School"]'
+        ).value,
+
+
+        information:
+        document.querySelector(
+        "textarea"
+        ).value,
+
+
+        date:
+        new Date().toLocaleString()
 
     };
+
+
 
     let applications =
     JSON.parse(localStorage.getItem("applications")) || [];
 
+
+
     applications.push(application);
+
+
 
     localStorage.setItem(
         "applications",
         JSON.stringify(applications)
     );
 
-    alert("Application submitted successfully.");
 
-    this.reset();
+
+    alert(
+    "Your admission application has been submitted successfully!"
+    );
+
+
+
+    admissionForm.reset();
+
 
 });
-</script>
 
 
 
