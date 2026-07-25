@@ -643,7 +643,102 @@ admissionForm.reset();
 
 
 
-});
+})// ==========================
+// SAVE ADMISSION APPLICATIONS
+// ==========================
+
+const admissionForm = document.getElementById("admissionForm");
+
+
+admissionForm.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+
+    // Create admission object
+
+    const admission = {
+
+        id: Date.now(),
+
+        studentName:
+        document.getElementById("studentName").value,
+
+
+        dob:
+        document.getElementById("dob").value,
+
+
+        gender:
+        document.getElementById("gender").value,
+
+
+        parentName:
+        document.getElementById("parentName").value,
+
+
+        phone:
+        document.getElementById("phone").value,
+
+
+        email:
+        document.getElementById("email").value,
+
+
+        classApplying:
+        document.getElementById("classApplying").value,
+
+
+        previousSchool:
+        document.getElementById("previousSchool").value,
+
+
+        information:
+        document.getElementById("information").value,
+
+
+        status:"Pending",
+
+
+        date:
+        new Date().toLocaleString()
+
+    };
+
+
+
+    // Get old admissions
+
+    let admissions =
+    JSON.parse(localStorage.getItem("admissions")) || [];
+
+
+
+    // Add new admission
+
+    admissions.push(admission);
+
+
+
+    // Save to LocalStorage
+
+    localStorage.setItem(
+        "admissions",
+        JSON.stringify(admissions)
+    );
+
+
+
+    alert(
+    "Admission application submitted successfully!"
+    );
+
+
+
+    admissionForm.reset();
+
+
+});;
 
 </script>
 
