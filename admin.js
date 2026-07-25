@@ -1,88 +1,143 @@
-// USERS
+// ======================================
+// CHECK LOGIN
+// ======================================
 
-const users = [
+if(localStorage.getItem("loggedIn") !== "true"){
 
-{
-    username: "admin",
-    password: "12345",
-    role: "admin"
-},
+    window.location.href = "admin-login.html";
 
-{
-    username: "secretary",
-    password: "12345",
-    role: "secretary"
 }
 
-];
+// ======================================
+// USER DETAILS
+// ======================================
 
-function login(){
+const username = localStorage.getItem("username");
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+const role = localStorage.getItem("role");
 
-    const user = users.find(u =>
-        u.username === username &&
-        u.password === password
-    );
+// ======================================
+// SHOW USER NAME
+// ======================================
 
-    if(user){
+const welcome = document.getElementById("welcome");
 
-        localStorage.setItem("loggedIn","true");
-        localStorage.setItem("username",user.username);
-        localStorage.setItem("role",user.role);
+if(welcome){
 
-        window.location="admin.html";
+    welcome.innerHTML =
+    "Welcome " + username + " (" + role + ")";
 
-    }else{
+}
 
-        document.getElementById("message").innerHTML =
-        "Invalid username or password";
+// ======================================
+// ROLE PERMISSIONS
+// ======================================
+
+window.onload = function(){
+
+    if(role === "secretary"){
+
+        hideSection("gallery");
+        hideSection("students");
+
+        hideLink("galleryLink");
+        hideLink("studentLink");
+
+    }
+
+    else if(role === "bursar"){
+
+        hideSection("announcements");
+        hideSection("gallery");
+        hideSection("students");
+        hideSection("messages");
+
+        hideLink("galleryLink");
+        hideLink("studentLink");
+
+    }
+
+    else if(role === "teacher"){
+
+        hideSection("announcements");
+        hideSection("gallery");
+        hideSection("admissions");
+        hideSection("messages");
+
+        hideLink("galleryLink");
+        hideLink("admissionLink");
+
+    }
+
+    else if(role === "librarian"){
+
+        hideSection("announcements");
+        hideSection("gallery");
+        hideSection("students");
+        hideSection("admissions");
+        hideSection("messages");
+
+        hideLink("galleryLink");
+        hideLink("studentLink");
+        hideLink("admissionLink");
+
+    }
+
+    else if(role === "ict"){
+
+        hideSection("students");
+        hideSection("admissions");
+        hideSection("messages");
+
+        hideLink("studentLink");
+        hideLink("admissionLink");
+
+    }
+
+};
+
+// ======================================
+// HIDE SECTION
+// ======================================
+
+function hideSection(id){
+
+    const section = document.getElementById(id);
+
+    if(section){
+
+        section.style.display = "none";
 
     }
 
 }
-// Check Login
 
-if(localStorage.getItem("loggedIn") !== "true"){
+// ======================================
+// HIDE MENU LINK
+// ======================================
 
-    window.location = "admin-login.html";
+function hideLink(id){
 
-}
-const role = localStorage.getItem("role");
-const role = localStorage.getItem("role");
+    const link = document.getElementById(id);
 
-if(role === "secretary"){
+    if(link){
 
-    document.getElementById("gallery").style.display = "none";
+        link.style.display = "none";
 
-    document.getElementById("admissions").style.display = "none";
-
-    document.getElementById("students").style.display = "none";
+    }
 
 }
-if(role === "secretary"){
 
-    document.getElementById("galleryLink").style.display = "none";
+// ======================================
+// LOGOUT
+// ======================================
 
-    document.getElementById("admissionLink").style.display = "none";
-
-    document.getElementById("studentLink").style.display = "none";
-
-}const username = localStorage.getItem("username");
-
-const role = localStorage.getItem("role");
-
-document.getElementById("welcome").innerHTML =
-"Welcome " + username + " (" + role + ")";
 function logout(){
 
     localStorage.removeItem("loggedIn");
-
     localStorage.removeItem("username");
-
     localStorage.removeItem("role");
 
-    window.location = "admin-login.html";
+    window.location.href = "admin-login.html";
 
 }
