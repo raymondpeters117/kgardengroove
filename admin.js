@@ -1,140 +1,88 @@
-/*=====================================
-    ANNOUNCEMENTS SYSTEM
-=====================================*/
+// USERS
 
-const STORAGE_KEY = "announcements";
+const users = [
 
-/* Get announcements */
-function getAnnouncements() {
-    try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch (error) {
-        return [];
-    }
+{
+    username: "admin",
+    password: "12345",
+    role: "admin"
+},
+
+{
+    username: "secretary",
+    password: "12345",
+    role: "secretary"
 }
 
-/* Save announcements */
-function saveAnnouncements(data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
+];
 
-/* Add announcement */
-function addAnnouncement() {
+function login(){
 
-    const title = document
-        .getElementById("announcementTitle")
-        .value
-        .trim();
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    const text = document
-        .getElementById("announcementText")
-        .value
-        .trim();
+    const user = users.find(u =>
+        u.username === username &&
+        u.password === password
+    );
 
-    if (!title || !text) {
-        alert("Please fill in all fields.");
-        return;
-    }
+    if(user){
 
-    let announcements = getAnnouncements();
+        localStorage.setItem("loggedIn","true");
+        localStorage.setItem("username",user.username);
+        localStorage.setItem("role",user.role);
 
-    announcements.unshift({
-        id: Date.now(),
-        title,
-        text,
-        date: new Date().toLocaleDateString()
-    });
+        window.location="admin.html";
 
-    saveAnnouncements(announcements);
+    }else{
 
-    document.getElementById("announcementTitle").value = "";
-    document.getElementById("announcementText").value = "";
+        document.getElementById("message").innerHTML =
+        "Invalid username or password";
 
-    loadAnnouncements();
-    updateNewsTicker();
-
-    alert("Announcement published successfully!");
-}
-
-/* Load announcements */
-function loadAnnouncements() {
-
-    const box = document.getElementById("announcementList");
-
-    if (!box) return;
-
-    const announcements = getAnnouncements();
-
-    if (announcements.length === 0) {
-
-        box.innerHTML = `
-            <p class="empty-message">
-                No announcements available.
-            </p>
-        `;
-
-        return;
     }
 
-    box.innerHTML = announcements.map(item => `
-        <div class="announcement-card">
-
-            <h3>${item.title}</h3>
-
-            <p>${item.text}</p>
-
-            <small>${item.date}</small>
-
-            <button
-                class="delete-btn"
-                onclick="deleteAnnouncement(${item.id})">
-                Delete
-            </button>
-
-        </div>
-    `).join("");
 }
+// Check Login
 
-/* Delete announcement */
-function deleteAnnouncement(id) {
+if(localStorage.getItem("loggedIn") !== "true"){
 
-    if (!confirm("Delete this announcement?")) return;
+    window.location = "admin-login.html";
 
-    let announcements = getAnnouncements();
-
-    announcements = announcements.filter(item => item.id !== id);
-
-    saveAnnouncements(announcements);
-
-    loadAnnouncements();
-    updateNewsTicker();
 }
+const role = localStorage.getItem("role");
+const role = localStorage.getItem("role");
 
-/* News ticker */
-function updateNewsTicker() {
+if(role === "secretary"){
 
-    const ticker = document.getElementById("newsTicker");
+    document.getElementById("gallery").style.display = "none";
 
-    if (!ticker) return;
+    document.getElementById("admissions").style.display = "none";
 
-    const announcements = getAnnouncements();
+    document.getElementById("students").style.display = "none";
 
-    if (announcements.length === 0) {
-
-        ticker.innerHTML = "📢 No new announcements.";
-
-        return;
-    }
-
-    ticker.innerHTML = announcements
-        .map(item => `📢 ${item.title} - ${item.text}`)
-        .join(" &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; ");
 }
+if(role === "secretary"){
 
-/* Initialize */
-document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("galleryLink").style.display = "none";
 
-    loadAnnouncements();
-    updateNewsTicker();
+    document.getElementById("admissionLink").style.display = "none";
 
-});
+    document.getElementById("studentLink").style.display = "none";
+
+}const username = localStorage.getItem("username");
+
+const role = localStorage.getItem("role");
+
+document.getElementById("welcome").innerHTML =
+"Welcome " + username + " (" + role + ")";
+function logout(){
+
+    localStorage.removeItem("loggedIn");
+
+    localStorage.removeItem("username");
+
+    localStorage.removeItem("role");
+
+    window.location = "admin-login.html";
+
+}
