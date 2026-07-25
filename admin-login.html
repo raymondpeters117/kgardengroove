@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Admin Login</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login | K. Garden Groove College Buddo</title>
+
+<link rel="icon" href="Badge.jpg">
 
 <style>
 
@@ -12,210 +19,112 @@
     font-family:Arial, sans-serif;
 }
 
-
 body{
-
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:linear-gradient(135deg,#0066ff,#00c6ff);
-
 }
-
 
 .login-box{
-
     width:350px;
-    background:white;
+    background:#fff;
     padding:35px;
     border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
+.logo{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:10px;
+}
 
 .login-box h2{
-
     text-align:center;
     margin-bottom:25px;
     color:#0066ff;
-
 }
-
 
 .input-box{
-
     margin-bottom:20px;
-
 }
 
-
 .input-box input{
-
     width:100%;
     padding:12px;
     border:1px solid #ccc;
     border-radius:8px;
     outline:none;
-
+    font-size:15px;
 }
 
+.input-box input:focus{
+    border-color:#0066ff;
+}
 
 button{
-
     width:100%;
     padding:12px;
     background:#0066ff;
-    color:white;
+    color:#fff;
     border:none;
     border-radius:8px;
     cursor:pointer;
     font-size:16px;
-
+    transition:.3s;
 }
-
 
 button:hover{
-
     background:#004dcc;
-
 }
 
-
 #message{
-
     text-align:center;
     margin-top:15px;
     color:red;
-
+    font-size:14px;
 }
-
-
-.logo{
-
-    text-align:center;
-    font-size:45px;
-    margin-bottom:10px;
-
-}
-
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="login-box">
 
-<div class="logo">
-🔐
-</div>
+<div class="logo">🔐</div>
 
-
-<h2>
-Admin Login
-</h2>
-
+<h2>Admin Login</h2>
 
 <div class="input-box">
-
-<input 
-type="text" 
+<input
+type="text"
 id="username"
-placeholder="Username">
-
+placeholder="Username"
+required>
 </div>
-
-
 
 <div class="input-box">
-
-<input 
-type="password" 
+<input
+type="password"
 id="password"
-placeholder="Password">
-
+placeholder="Password"
+required>
 </div>
 
-
-
-<button onclick="login()">
+<button type="button" onclick="login()">
 Login
 </button>
 
-
 <p id="message"></p>
-
 
 </div>
 
-
-
-<script>
-
-
-// DEFAULT ADMIN ACCOUNT
-
-let admin = {
-
-username:"admin",
-password:"12345"
-
-};
-
-
-
-// LOGIN FUNCTION
-
-function login(){
-
-
-let username =
-document.getElementById("username").value;
-
-
-let password =
-document.getElementById("password").value;
-
-
-
-if(username === admin.username &&
-password === admin.password){
-
-
-
-localStorage.setItem(
-"adminLogin",
-"true"
-);
-
-
-
-window.location="admin.html";
-
-
-}
-
-else{
-
-
-document.getElementById("message").innerHTML =
-"Invalid username or password";
-
-
-}
-
-
-}
-
-
-
-</script>
-
+<!-- External Login Script -->
+<script src="login.js"></script>
 
 </body>
 </html>
