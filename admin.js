@@ -212,4 +212,241 @@ function deleteApplication(index){
 
 }
 
-loadApplications();
+loadApplications()
+    // ==========================
+// DISPLAY ADMISSIONS
+// ==========================
+
+
+function loadAdmissions(){
+
+
+let admissions =
+JSON.parse(localStorage.getItem("admissions")) || [];
+
+
+let box =
+document.getElementById("applications");
+
+
+box.innerHTML="";
+
+
+if(admissions.length === 0){
+
+box.innerHTML =
+"<p>No applications yet.</p>";
+
+return;
+
+}
+
+
+
+admissions.forEach((student,index)=>{
+
+
+box.innerHTML += `
+
+<div class="application-card">
+
+<h3>${student.studentName}</h3>
+
+<p>
+<b>Date of Birth:</b>
+${student.dateOfBirth}
+</p>
+
+
+<p>
+<b>Gender:</b>
+${student.gender}
+</p>
+
+
+<p>
+<b>Parent:</b>
+${student.parentName}
+</p>
+
+
+<p>
+<b>Phone:</b>
+${student.phone}
+</p>
+
+
+<p>
+<b>Class:</b>
+${student.classApplying}
+</p>
+
+
+<p>
+<b>Status:</b>
+${student.status}
+</p>
+
+
+</div>
+
+`;
+
+});
+
+
+}
+
+
+
+
+
+// ==========================
+// ADD STUDENTS FROM APPLICATIONS
+// ==========================
+
+
+function loadStudents(){
+
+
+let admissions =
+JSON.parse(localStorage.getItem("admissions")) || [];
+
+
+let list =
+document.getElementById("studentList");
+
+
+list.innerHTML="";
+
+
+admissions.forEach(student=>{
+
+
+list.innerHTML += `
+
+<li>
+
+${student.studentName}
+
+-
+${student.classApplying}
+
+</li>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+
+
+
+// ==========================
+// IMAGE UPLOAD
+// ==========================
+
+
+function addImage(){
+
+
+let file =
+document.getElementById("imageUpload").files[0];
+
+
+if(!file){
+
+alert("Select an image first");
+
+return;
+
+}
+
+
+
+let reader = new FileReader();
+
+
+
+reader.onload=function(e){
+
+
+let images =
+JSON.parse(localStorage.getItem("gallery")) || [];
+
+
+
+images.push(e.target.result);
+
+
+
+localStorage.setItem(
+"gallery",
+JSON.stringify(images)
+);
+
+
+
+displayImages();
+
+
+};
+
+
+
+reader.readAsDataURL(file);
+
+
+
+}
+
+
+
+
+
+function displayImages(){
+
+
+let images =
+JSON.parse(localStorage.getItem("gallery")) || [];
+
+
+let gallery =
+document.getElementById("galleryList");
+
+
+gallery.innerHTML="";
+
+
+images.forEach(img=>{
+
+
+gallery.innerHTML += `
+
+<img src="${img}" width="150">
+
+`;
+
+});
+
+
+}
+
+
+
+
+
+
+// LOAD DATA WHEN PAGE OPENS
+
+loadAdmissions();
+
+loadStudents();
+
+displayImages();;
