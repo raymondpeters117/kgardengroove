@@ -493,32 +493,29 @@ if (admissionForm) {
         // Create admission object
         const admission = {
 
-            id: Date.now(),
+    studentName: document.getElementById("studentName").value,
 
-            studentName: document.getElementById("studentName").value.trim(),
+    dob: document.getElementById("dob").value,
 
-            dob: document.getElementById("dob").value,
+    gender: document.getElementById("gender").value,
 
-            gender: document.getElementById("gender").value,
+    parentName: document.getElementById("parentName").value,
 
-            parentName: document.getElementById("parentName").value.trim(),
+    phone: document.getElementById("phone").value,
 
-            phone: document.getElementById("phone").value.trim(),
+    email: document.getElementById("email").value,
 
-            email: document.getElementById("email").value.trim(),
+    classApplying: document.getElementById("classApplying").value,
 
-            classApplying: document.getElementById("classApplying").value,
+    previousSchool: document.getElementById("previousSchool").value,
 
-            previousSchool: document.getElementById("previousSchool").value.trim(),
+    information: document.getElementById("information").value,
 
-            information: document.getElementById("information").value.trim(),
+    status: "Pending",   // no id needed
 
-            status: "Pending",
+    date: new Date().toLocaleString()
 
-            submittedAt: new Date().toLocaleString()
-
-        };
-
+};
         // Get existing admissions
         let admissions = JSON.parse(localStorage.getItem("admissions")) || [];
 
