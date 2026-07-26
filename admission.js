@@ -1,120 +1,79 @@
-console.log("Admission JS is working");
-// ==========================
-// MOBILE MENU
-// ==========================
-
-const menuToggle =
-document.getElementById("menuToggle");
+console.log("Admission JS Loaded");
 
 
-const navLinks =
-document.getElementById("navLinks");
+const admissionForm = document.getElementById("admissionForm");
 
 
-if(menuToggle){
+if(!admissionForm){
 
-menuToggle.onclick=function(){
-
-navLinks.classList.toggle("show");
+    console.log("Form not found");
 
 }
-
-}
-
+else{
 
 
-// ==========================
-// ADMISSION FORM
-// ==========================
-
-
-const admissionForm =
-document.getElementById("admissionForm");
-
-
-
-if(admissionForm){
-
-
-admissionForm.addEventListener(
-"submit",
-function(e){
+admissionForm.addEventListener("submit", function(e){
 
 
 e.preventDefault();
 
 
+console.log("Submit button clicked");
+
+
 
 let admission = {
 
+    id: Date.now(),
 
-id: Date.now(),
+    studentName:
+    document.getElementById("studentName").value,
 
+    dateOfBirth:
+    document.getElementById("dob").value,
 
-studentName:
-document.getElementById("studentName").value,
+    gender:
+    document.getElementById("gender").value,
 
+    parentName:
+    document.getElementById("parentName").value,
 
-dateOfBirth:
-document.getElementById("dob").value,
+    phone:
+    document.getElementById("phone").value,
 
+    email:
+    document.getElementById("email").value,
 
-gender:
-document.getElementById("gender").value,
+    classApplying:
+    document.getElementById("classApplying").value,
 
+    previousSchool:
+    document.getElementById("previousSchool").value,
 
-parentName:
-document.getElementById("parentName").value,
+    information:
+    document.getElementById("information").value,
 
+    status:"Pending",
 
-phone:
-document.getElementById("phone").value,
-
-
-email:
-document.getElementById("email").value,
-
-
-classApplying:
-document.getElementById("classApplying").value,
-
-
-previousSchool:
-document.getElementById("previousSchool").value,
-
-
-information:
-document.getElementById("information").value,
-
-
-status:
-"Pending",
-
-
-dateSubmitted:
-new Date().toLocaleString()
-
+    dateSubmitted:
+    new Date().toLocaleString()
 
 };
 
 
 
-// GET OLD DATA
+console.log(admission);
+
+
 
 let admissions =
-JSON.parse(
-localStorage.getItem("admissions")
-) || [];
+JSON.parse(localStorage.getItem("admissions")) || [];
 
 
-
-// ADD NEW APPLICATION
 
 admissions.push(admission);
 
 
-
-// SAVE
 
 localStorage.setItem(
 "admissions",
@@ -124,29 +83,19 @@ JSON.stringify(admissions)
 
 
 console.log(
-"Saved Admission:",
-admission
+"Saved:",
+localStorage.getItem("admissions")
 );
 
 
 
-alert(
-"Application submitted successfully!"
-);
-
+alert("Application saved successfully");
 
 
 admissionForm.reset();
-
 
 
 });
 
 
 }
-
-
-
-console.log(
-"Admission JS Loaded"
-);
