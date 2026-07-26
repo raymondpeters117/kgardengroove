@@ -543,203 +543,64 @@ navLinks.classList.toggle("show");
 
 
 // ==========================
-// ADMISSION SUBMISSION
 // ==========================
-
-
-const admissionForm =
-document.getElementById("admissionForm");
-
-
-
-admissionForm.addEventListener(
-"submit",
-function(e){
-
-
-e.preventDefault();
-
-
-
-let application = {
-
-
-studentName:
-document.getElementById("studentName").value,
-
-
-dob:
-document.getElementById("dob").value,
-
-
-gender:
-document.getElementById("gender").value,
-
-
-parentName:
-document.getElementById("parentName").value,
-
-
-phone:
-document.getElementById("phone").value,
-
-
-email:
-document.getElementById("email").value,
-
-
-classApplying:
-document.getElementById("classApplying").value,
-
-
-previousSchool:
-document.getElementById("previousSchool").value,
-
-
-information:
-document.getElementById("information").value,
-
-
-date:
-new Date().toLocaleString()
-
-
-};
-
-
-
-
-// get existing applications
-
-let applications =
-JSON.parse(
-localStorage.getItem("applications")
-) || [];
-
-
-
-// add new application
-
-applications.push(application);
-
-
-
-// save applications
-
-localStorage.setItem(
-"applications",
-JSON.stringify(applications)
-);
-
-
-
-alert(
-"Application submitted successfully!"
-);
-
-
-
-admissionForm.reset();
-
-
-
-})// ==========================
 // SAVE ADMISSION APPLICATIONS
 // ==========================
 
 const admissionForm = document.getElementById("admissionForm");
 
+if (admissionForm) {
 
-admissionForm.addEventListener("submit", function(e){
+    admissionForm.addEventListener("submit", function (e) {
 
-    e.preventDefault();
+        e.preventDefault();
 
+        // Create admission object
+        const admission = {
 
-    // Create admission object
+            id: Date.now(),
 
-    const admission = {
+            studentName: document.getElementById("studentName").value.trim(),
 
-        id: Date.now(),
+            dob: document.getElementById("dob").value,
 
-        studentName:
-        document.getElementById("studentName").value,
+            gender: document.getElementById("gender").value,
 
+            parentName: document.getElementById("parentName").value.trim(),
 
-        dob:
-        document.getElementById("dob").value,
+            phone: document.getElementById("phone").value.trim(),
 
+            email: document.getElementById("email").value.trim(),
 
-        gender:
-        document.getElementById("gender").value,
+            classApplying: document.getElementById("classApplying").value,
 
+            previousSchool: document.getElementById("previousSchool").value.trim(),
 
-        parentName:
-        document.getElementById("parentName").value,
+            information: document.getElementById("information").value.trim(),
 
+            status: "Pending",
 
-        phone:
-        document.getElementById("phone").value,
+            submittedAt: new Date().toLocaleString()
 
+        };
 
-        email:
-        document.getElementById("email").value,
+        // Get existing admissions
+        let admissions = JSON.parse(localStorage.getItem("admissions")) || [];
 
+        // Add new admission
+        admissions.push(admission);
 
-        classApplying:
-        document.getElementById("classApplying").value,
+        // Save back to LocalStorage
+        localStorage.setItem("admissions", JSON.stringify(admissions));
 
+        alert("Admission application submitted successfully!");
 
-        previousSchool:
-        document.getElementById("previousSchool").value,
+        // Reset the form
+        this.reset();
 
+    });
 
-        information:
-        document.getElementById("information").value,
-
-
-        status:"Pending",
-
-
-        date:
-        new Date().toLocaleString()
-
-    };
-
-
-
-    // Get old admissions
-
-    let admissions =
-    JSON.parse(localStorage.getItem("admissions")) || [];
-
-
-
-    // Add new admission
-
-    admissions.push(admission);
-
-
-
-    // Save to LocalStorage
-
-    localStorage.setItem(
-        "admissions",
-        JSON.stringify(admissions)
-    );
-
-
-
-    alert(
-    "Admission application submitted successfully!"
-    );
-
-
-
-    admissionForm.reset();
-
-
-});
-
+}
 </script>
 
 </body>
