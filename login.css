@@ -6,16 +6,16 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',Arial,sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
+html{
+    scroll-behavior:smooth;
+}
 
 body{
 
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    min-height:100vh;
 
     background:
     linear-gradient(
@@ -27,11 +27,172 @@ body{
     background-size:cover;
     background-position:center;
 
+    padding-top:80px;
+
 }
 
 
 /* ================================
-   LOGIN BOX
+   NAVBAR
+================================ */
+
+
+.navbar{
+
+    width:100%;
+
+    background:#003366;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 7%;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    z-index:1000;
+
+}
+
+
+/* LOGO */
+
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+
+.logo img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #ffd700;
+
+}
+
+
+
+/* MENU */
+
+
+.nav-links{
+
+    display:flex;
+
+    gap:25px;
+
+    list-style:none;
+
+}
+
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+
+
+.nav-links a:hover{
+
+    color:#ffd700;
+
+}
+
+
+/* ACTIVE LINK */
+
+.nav-links .active{
+
+    color:#ffd700;
+
+}
+
+
+
+
+/* LOGIN BUTTON */
+
+
+.admin-btn{
+
+    background:#ffd700;
+
+    color:#003366!important;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+}
+
+
+
+.admin-btn:hover{
+
+    background:white;
+
+}
+
+
+
+
+/* MOBILE MENU BUTTON */
+
+
+.menu-toggle{
+
+    display:none;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+/* ================================
+   LOGIN CARD
 ================================ */
 
 
@@ -39,8 +200,7 @@ body{
 
     width:380px;
 
-    background:
-    rgba(255,255,255,.95);
+    background:white;
 
     padding:40px;
 
@@ -49,17 +209,20 @@ body{
     box-shadow:
     0 20px 50px rgba(0,0,0,.35);
 
-    animation:showBox .8s ease;
+    margin:auto;
+
+    animation:slide .8s ease;
 
 }
 
 
 
-@keyframes showBox{
+@keyframes slide{
 
 from{
 
-    transform:translateY(-50px);
+    transform:translateY(-40px);
+
     opacity:0;
 
 }
@@ -67,6 +230,7 @@ from{
 to{
 
     transform:translateY(0);
+
     opacity:1;
 
 }
@@ -76,30 +240,25 @@ to{
 
 
 
-/* ================================
-   LOGO
-================================ */
+/* LOGO ICON */
 
 
-.logo{
+.login-logo{
 
     text-align:center;
 
-    margin-bottom:15px;
+    margin-bottom:20px;
 
 }
 
 
+.login-logo img{
 
-.logo img{
+    width:90px;
 
-    width:80px;
-
-    height:80px;
+    height:90px;
 
     border-radius:50%;
-
-    object-fit:cover;
 
     border:4px solid #ffd700;
 
@@ -107,19 +266,8 @@ to{
 
 
 
-.logo-icon{
 
-    font-size:55px;
-
-}
-
-
-
-
-
-/* ================================
-   TITLE
-================================ */
+/* TITLE */
 
 
 .login-box h2{
@@ -128,8 +276,6 @@ to{
 
     color:#003366;
 
-    font-size:30px;
-
     margin-bottom:30px;
 
 }
@@ -137,10 +283,7 @@ to{
 
 
 
-
-/* ================================
-   INPUTS
-================================ */
+/* INPUT */
 
 
 .input-box{
@@ -148,7 +291,6 @@ to{
     margin-bottom:20px;
 
 }
-
 
 
 .input-box input{
@@ -162,10 +304,6 @@ to{
     border:1px solid #ccc;
 
     outline:none;
-
-    font-size:15px;
-
-    transition:.3s;
 
 }
 
@@ -184,13 +322,10 @@ to{
 
 
 
-/* ================================
-   BUTTON
-================================ */
+/* BUTTON */
 
 
 button{
-
 
     width:100%;
 
@@ -206,11 +341,9 @@ button{
 
     font-size:17px;
 
-    font-weight:bold;
-
     cursor:pointer;
 
-    transition:.3s;
+    font-weight:bold;
 
 }
 
@@ -218,23 +351,13 @@ button{
 
 button:hover{
 
-
     background:#ffd700;
 
     color:#003366;
 
-    transform:translateY(-3px);
-
-
 }
 
 
-
-
-
-/* ================================
-   MESSAGE
-================================ */
 
 
 #message{
@@ -245,34 +368,70 @@ button:hover{
 
     color:red;
 
-    font-weight:600;
-
 }
-
 
 
 
 
 /* ================================
-   MOBILE
+   MOBILE RESPONSIVE
 ================================ */
 
 
-@media(max-width:500px){
+@media(max-width:900px){
+
+
+.nav-links{
+
+    position:absolute;
+
+    top:80px;
+
+    left:0;
+
+    width:100%;
+
+    background:#003366;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:25px;
+
+    display:none;
+
+}
+
+
+
+.nav-links.show{
+
+    display:flex;
+
+}
+
+
+
+.menu-toggle{
+
+    display:block;
+
+}
+
+
+
+.logo span{
+
+    font-size:14px;
+
+}
+
 
 
 .login-box{
 
     width:90%;
-
-    padding:30px;
-
-}
-
-
-.login-box h2{
-
-    font-size:25px;
 
 }
 
