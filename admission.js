@@ -1,6 +1,5 @@
 console.log("Admission JS loaded");
 
-
 const form = document.getElementById("admissionForm");
 
 
