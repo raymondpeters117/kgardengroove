@@ -305,6 +305,11 @@ function loadAdmissions() {
     });
 
 }
+window.onload = function () {
+
+    loadAdmissions();
+
+};
 // ======================================
 // LOGOUT
 // ======================================
