@@ -36,15 +36,15 @@ if (admissionForm) {
 
         // Check all required elements
 
-        const studentName = document.getElementById("studentName");
-        const dob = document.getElementById("dob");
-        const gender = document.getElementById("gender");
-        const parentName = document.getElementById("parentName");
-        const phone = document.getElementById("phone");
-        const email = document.getElementById("email");
-        const classApplying = document.getElementById("classApplying");
-        const previousSchool = document.getElementById("previousSchool");
-        const information = document.getElementById("information");
+        document.getElementById("studentName").value
+document.getElementById("dob").value
+document.getElementById("gender").value
+document.getElementById("parentName").value
+document.getElementById("phone").value
+document.getElementById("email").value
+document.getElementById("classApplying").value
+document.getElementById("previousSchool").value
+document.getElementById("information").value
 
         if (
             !studentName ||
