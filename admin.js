@@ -249,7 +249,62 @@ function loadStudents(){
     list.innerHTML=html;
 
 }
+function loadAdmissions() {
 
+    const container = document.getElementById("applications");
+
+    if (!container) return;
+
+    const admissions =
+    JSON.parse(localStorage.getItem("admissions")) || [];
+
+    if (admissions.length === 0) {
+
+        container.innerHTML = "<h3>No admission applications found.</h3>";
+
+        return;
+
+    }
+
+    container.innerHTML = "";
+
+    admissions.forEach((student, index) => {
+
+        container.innerHTML += `
+
+        <div class="application-card">
+
+            <h3>${student.studentName}</h3>
+
+            <p><strong>Class:</strong> ${student.classApplying}</p>
+
+            <p><strong>Date of Birth:</strong> ${student.dateOfBirth}</p>
+
+            <p><strong>Gender:</strong> ${student.gender}</p>
+
+            <p><strong>Parent:</strong> ${student.parentName}</p>
+
+            <p><strong>Phone:</strong> ${student.phone}</p>
+
+            <p><strong>Email:</strong> ${student.email}</p>
+
+            <p><strong>Previous School:</strong> ${student.previousSchool}</p>
+
+            <p><strong>Status:</strong> ${student.status}</p>
+
+            <p><strong>Submitted:</strong> ${student.dateSubmitted}</p>
+
+            <button onclick="deleteAdmission(${index})">
+                Delete
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
 // ======================================
 // LOGOUT
 // ======================================
