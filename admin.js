@@ -2,512 +2,362 @@
 // CHECK LOGIN
 // ======================================
 
-if(localStorage.getItem("loggedIn") !== "true"){
-
-    window.location.href="admin-login.html";
-
+if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "admin-login.html";
 }
-
 
 // ======================================
 // USER DETAILS
 // ======================================
 
-const username = localStorage.getItem("username");
-const role = localStorage.getItem("role");
+const username = localStorage.getItem("username") || "User";
+const role = localStorage.getItem("role") || "";
 
-
+// ======================================
+// WELCOME MESSAGE
+// ======================================
 
 const welcome = document.getElementById("welcome");
 
-if(welcome){
-
-    welcome.innerHTML =
-    `Welcome ${username} (${role})`;
-
+if (welcome) {
+    welcome.innerHTML = `Welcome ${username} (${role})`;
 }
-
-
 
 // ======================================
-// ROLE PERMISSIONS
+// PAGE LOAD
 // ======================================
 
-window.onload=function(){
+window.onload = function () {
 
+    // Role Permissions
 
-if(role==="secretary"){
+    if (role === "secretary") {
 
+        hideSection("gallery");
+        hideSection("students");
 
-hideSection("gallery");
-hideSection("students");
+        hideLink("galleryLink");
+        hideLink("studentLink");
 
+    }
 
-hideLink("galleryLink");
-hideLink("studentLink");
+    if (role === "bursar") {
 
+        hideSection("announcements");
+        hideSection("gallery");
+        hideSection("students");
+        hideSection("messages");
 
-}
+        hideLink("galleryLink");
+        hideLink("studentLink");
 
+    }
 
+    if (role === "teacher") {
 
-if(role==="bursar"){
+        hideSection("announcements");
+        hideSection("gallery");
+        hideSection("admissions");
+        hideSection("messages");
 
+        hideLink("galleryLink");
+        hideLink("admissionLink");
 
-hideSection("announcements");
-hideSection("gallery");
-hideSection("students");
-hideSection("messages");
+    }
 
+    if (role === "librarian") {
 
-hideLink("galleryLink");
-hideLink("studentLink");
+        hideSection("announcements");
+        hideSection("gallery");
+        hideSection("students");
+        hideSection("admissions");
+        hideSection("messages");
 
+        hideLink("galleryLink");
+        hideLink("studentLink");
+        hideLink("admissionLink");
 
-}
+    }
 
+    if (role === "ict") {
 
+        hideSection("students");
+        hideSection("admissions");
+        hideSection("messages");
 
-if(role==="teacher"){
+        hideLink("studentLink");
+        hideLink("admissionLink");
 
+    }
 
-hideSection("announcements");
-hideSection("gallery");
-hideSection("admissions");
-hideSection("messages");
-
-
-hideLink("galleryLink");
-hideLink("admissionLink");
-
-
-}
-
-
-
-if(role==="librarian"){
-
-
-hideSection("announcements");
-hideSection("gallery");
-hideSection("students");
-hideSection("admissions");
-hideSection("messages");
-
-
-hideLink("galleryLink");
-hideLink("studentLink");
-hideLink("admissionLink");
-
-
-}
-
-
-
-if(role==="ict"){
-
-
-hideSection("students");
-hideSection("admissions");
-hideSection("messages");
-
-
-hideLink("studentLink");
-hideLink("admissionLink");
-
-
-}
-
-
-
-
-loadAdmissions();
-
-loadStudents();
-
-displayImages();
-
+    loadAdmissions();
+    loadStudents();
+    displayImages();
 
 };
 
-
-
-
-
 // ======================================
-// HIDE FUNCTIONS
+// HIDE SECTION
 // ======================================
 
+function hideSection(id) {
 
-function hideSection(id){
+    const element = document.getElementById(id);
 
-let element=document.getElementById(id);
-
-if(element){
-
-element.style.display="none";
-
-}
+    if (element) {
+        element.style.display = "none";
+    }
 
 }
-
-
-
-function hideLink(id){
-
-let element=document.getElementById(id);
-
-if(element){
-
-element.style.display="none";
-
-}
-
-}
-
-
-
-
 
 // ======================================
-// ADMISSION DISPLAY
+// HIDE LINK
 // ======================================
 
+function hideLink(id) {
 
-function loadAdmissions(){
+    const element = document.getElementById(id);
 
-
-let container =
-document.getElementById("applications");
-
-
-if(!container) return;
-
-
-
-let admissions =
-JSON.parse(localStorage.getItem("admissions")) || [];
-
-
-
-container.innerHTML="";
-
-
-
-if(admissions.length===0){
-
-
-container.innerHTML=
-"<p>No admission applications yet.</p>";
-
-
-return;
-
+    if (element) {
+        element.style.display = "none";
+    }
 
 }
-
-
-
-
-admissions.forEach((student,index)=>{
-
-
-container.innerHTML +=`
-
-
-<div class="application-card">
-
-
-<h3>${student.studentName}</h3>
-
-
-<p>
-<b>Class:</b>
-${student.classApplying}
-</p>
-
-
-<p>
-<b>Gender:</b>
-${student.gender}
-</p>
-
-
-<p>
-<b>Date of Birth:</b>
-${student.dob}
-</p>
-
-
-<p>
-<b>Parent:</b>
-${student.parentName}
-</p>
-
-
-<p>
-<b>Phone:</b>
-${student.phone}
-</p>
-
-
-<p>
-<b>Email:</b>
-${student.email}
-</p>
-
-
-<p>
-<b>Previous School:</b>
-${student.previousSchool}
-</p>
-
-
-<p>
-<b>Information:</b>
-${student.information}
-</p>
-
-
-<p>
-<b>Status:</b>
-${student.status}
-</p>
-
-
-<p>
-<b>Date Submitted:</b>
-${student.dateSubmitted}
-</p>
-
-
-
-<button onclick="deleteAdmission(${index})">
-
-Delete
-
-</button>
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-function deleteAdmission(index){
-
-
-let admissions =
-JSON.parse(localStorage.getItem("admissions")) || [];
-
-
-
-admissions.splice(index,1);
-
-
-
-localStorage.setItem(
-"admissions",
-JSON.stringify(admissions)
-);
-
-
-
-loadAdmissions();
-
-
-}
-
-
-
-
 
 // ======================================
-// STUDENTS
+// LOAD ADMISSIONS
 // ======================================
 
+function loadAdmissions() {
 
-function loadStudents(){
+    const container = document.getElementById("applications");
 
+    if (!container) return;
 
-let list =
-document.getElementById("studentList");
+    const admissions =
+        JSON.parse(localStorage.getItem("admissions")) || [];
 
+    container.innerHTML = "";
 
-if(!list)return;
+    if (admissions.length === 0) {
 
+        container.innerHTML =
+            "<p>No admission applications yet.</p>";
 
+        return;
 
-let admissions =
-JSON.parse(localStorage.getItem("admissions")) || [];
+    }
 
+    admissions.forEach((student, index) => {
 
+        container.innerHTML += `
 
-list.innerHTML="";
+        <div class="application-card">
 
+            <h3>${student.studentName}</h3>
 
+            <p><b>Class:</b> ${student.classApplying}</p>
 
-admissions.forEach(student=>{
+            <p><b>Gender:</b> ${student.gender}</p>
 
+            <p><b>Date of Birth:</b> ${student.dateOfBirth}</p>
 
-list.innerHTML +=`
+            <p><b>Parent:</b> ${student.parentName}</p>
 
+            <p><b>Phone:</b> ${student.phone}</p>
 
-<li>
+            <p><b>Email:</b> ${student.email}</p>
 
-${student.studentName}
--
-${student.classApplying}
+            <p><b>Previous School:</b> ${student.previousSchool}</p>
 
-</li>
+            <p><b>Information:</b> ${student.information}</p>
 
+            <p><b>Status:</b> ${student.status}</p>
 
-`;
+            <p><b>Submitted:</b> ${student.dateSubmitted}</p>
 
+            <button onclick="deleteAdmission(${index})">
+                Delete
+            </button>
 
-});
+        </div>
 
+        `;
 
+    });
 
 }
-
-
-
-
-
-
 
 // ======================================
-// GALLERY IMAGE UPLOAD
+// DELETE ADMISSION
 // ======================================
 
+function deleteAdmission(index) {
 
-function addImage(){
+    let admissions =
+        JSON.parse(localStorage.getItem("admissions")) || [];
 
+    admissions.splice(index, 1);
 
-let file =
-document.getElementById("imageUpload").files[0];
+    localStorage.setItem(
+        "admissions",
+        JSON.stringify(admissions)
+    );
 
-
-
-if(!file){
-
-alert("Please select an image");
-
-return;
-
-}
-
-
-
-let reader=new FileReader();
-
-
-
-reader.onload=function(e){
-
-
-let images =
-JSON.parse(localStorage.getItem("gallery")) || [];
-
-
-
-images.push(e.target.result);
-
-
-
-localStorage.setItem(
-"gallery",
-JSON.stringify(images)
-);
-
-
-
-displayImages();
-
-
-};
-
-
-
-reader.readAsDataURL(file);
-
-
+    loadAdmissions();
+    loadStudents();
 
 }
 
+// ======================================
+// LOAD STUDENTS
+// ======================================
 
+function loadStudents() {
 
+    const list =
+        document.getElementById("studentList");
 
+    if (!list) return;
 
-function displayImages(){
+    const admissions =
+        JSON.parse(localStorage.getItem("admissions")) || [];
 
+    list.innerHTML = "";
 
-let gallery =
-document.getElementById("galleryList");
+    admissions.forEach(student => {
 
+        list.innerHTML += `
 
-if(!gallery)return;
+        <li>
 
+            ${student.studentName}
 
+            -
 
-let images =
-JSON.parse(localStorage.getItem("gallery")) || [];
+            ${student.classApplying}
 
+        </li>
 
+        `;
 
-gallery.innerHTML="";
-
-
-
-images.forEach(image=>{
-
-
-gallery.innerHTML +=`
-
-<img src="${image}" width="150">
-
-`;
-
-});
-
+    });
 
 }
 
+// ======================================
+// IMAGE UPLOAD
+// ======================================
 
+function addImage() {
 
+    const input =
+        document.getElementById("imageUpload");
 
+    if (!input || input.files.length === 0) {
 
+        alert("Please choose an image.");
 
+        return;
+
+    }
+
+    const file = input.files[0];
+
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+
+        let gallery =
+            JSON.parse(localStorage.getItem("gallery")) || [];
+
+        gallery.push(e.target.result);
+
+        localStorage.setItem(
+            "gallery",
+            JSON.stringify(gallery)
+        );
+
+        displayImages();
+
+        input.value = "";
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+
+// ======================================
+// DISPLAY IMAGES
+// ======================================
+
+function displayImages() {
+
+    const galleryList =
+        document.getElementById("galleryList");
+
+    if (!galleryList) return;
+
+    const gallery =
+        JSON.parse(localStorage.getItem("gallery")) || [];
+
+    galleryList.innerHTML = "";
+
+    gallery.forEach((image, index) => {
+
+        galleryList.innerHTML += `
+
+        <div class="gallery-card">
+
+            <img src="${image}" alt="Gallery Image">
+
+            <br><br>
+
+            <button onclick="deleteImage(${index})">
+
+                Delete
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+// ======================================
+// DELETE IMAGE
+// ======================================
+
+function deleteImage(index) {
+
+    let gallery =
+        JSON.parse(localStorage.getItem("gallery")) || [];
+
+    gallery.splice(index, 1);
+
+    localStorage.setItem(
+        "gallery",
+        JSON.stringify(gallery)
+    );
+
+    displayImages();
+
+}
 
 // ======================================
 // LOGOUT
 // ======================================
 
+function logout() {
 
-function logout(){
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("username");
+    localStorage.removeItem("role");
 
-
-localStorage.removeItem("loggedIn");
-
-localStorage.removeItem("username");
-
-localStorage.removeItem("role");
-
-
-window.location.href="admin-login.html";
-
+    window.location.href = "admin-login.html";
 
 }
