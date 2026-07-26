@@ -13,113 +13,121 @@ if (localStorage.getItem("loggedIn") !== "true") {
 const username = localStorage.getItem("username") || "User";
 const role = localStorage.getItem("role") || "";
 
-// ======================================
-// WELCOME MESSAGE
-// ======================================
-
 const welcome = document.getElementById("welcome");
 
 if (welcome) {
-    welcome.innerHTML = `Welcome ${username} (${role})`;
+    welcome.textContent = `Welcome ${username} (${role})`;
 }
 
 // ======================================
 // PAGE LOAD
 // ======================================
 
-window.onload = function () {
+window.addEventListener("DOMContentLoaded", () => {
 
-    // Role Permissions
-
-    if (role === "secretary") {
-
-        hideSection("gallery");
-        hideSection("students");
-
-        hideLink("galleryLink");
-        hideLink("studentLink");
-
-    }
-
-    if (role === "bursar") {
-
-        hideSection("announcements");
-        hideSection("gallery");
-        hideSection("students");
-        hideSection("messages");
-
-        hideLink("galleryLink");
-        hideLink("studentLink");
-
-    }
-
-    if (role === "teacher") {
-
-        hideSection("announcements");
-        hideSection("gallery");
-        hideSection("admissions");
-        hideSection("messages");
-
-        hideLink("galleryLink");
-        hideLink("admissionLink");
-
-    }
-
-    if (role === "librarian") {
-
-        hideSection("announcements");
-        hideSection("gallery");
-        hideSection("students");
-        hideSection("admissions");
-        hideSection("messages");
-
-        hideLink("galleryLink");
-        hideLink("studentLink");
-        hideLink("admissionLink");
-
-    }
-
-    if (role === "ict") {
-
-        hideSection("students");
-        hideSection("admissions");
-        hideSection("messages");
-
-        hideLink("studentLink");
-        hideLink("admissionLink");
-
-    }
+    applyRolePermissions();
 
     loadAdmissions();
+
     loadStudents();
-    displayImages();
 
-};
+});
 
 // ======================================
-// HIDE SECTION
+// ROLE PERMISSIONS
 // ======================================
 
-function hideSection(id) {
+function applyRolePermissions() {
 
-    const element = document.getElementById(id);
+    switch(role){
 
-    if (element) {
-        element.style.display = "none";
+        case "secretary":
+
+            hideSection("gallery");
+            hideSection("students");
+
+            hideLink("galleryLink");
+            hideLink("studentLink");
+
+            break;
+
+        case "bursar":
+
+            hideSection("announcements");
+            hideSection("gallery");
+            hideSection("students");
+            hideSection("messages");
+
+            hideLink("galleryLink");
+            hideLink("studentLink");
+
+            break;
+
+        case "teacher":
+
+            hideSection("announcements");
+            hideSection("gallery");
+            hideSection("admissions");
+            hideSection("messages");
+
+            hideLink("galleryLink");
+            hideLink("admissionLink");
+
+            break;
+
+        case "librarian":
+
+            hideSection("announcements");
+            hideSection("gallery");
+            hideSection("students");
+            hideSection("admissions");
+            hideSection("messages");
+
+            hideLink("galleryLink");
+            hideLink("studentLink");
+            hideLink("admissionLink");
+
+            break;
+
+        case "ict":
+
+            hideSection("students");
+            hideSection("admissions");
+            hideSection("messages");
+
+            hideLink("studentLink");
+            hideLink("admissionLink");
+
+            break;
+
     }
 
 }
 
 // ======================================
-// HIDE LINK
+// HIDE
 // ======================================
 
-function hideLink(id) {
+function hideSection(id){
 
     const element = document.getElementById(id);
 
-    if (element) {
-        element.style.display = "none";
+    if(element){
+
+        element.style.display="none";
+
+    }
+
+}
+
+function hideLink(id){
+
+    const element=document.getElementById(id);
+
+    if(element){
+
+        element.style.display="none";
+
     }
 
 }
@@ -128,53 +136,51 @@ function hideLink(id) {
 // LOAD ADMISSIONS
 // ======================================
 
-function loadAdmissions() {
+function loadAdmissions(){
 
-    const container = document.getElementById("applications");
+    const container=document.getElementById("applications");
 
-    if (!container) return;
+    if(!container) return;
 
-    const admissions =
-        JSON.parse(localStorage.getItem("admissions")) || [];
+    const admissions=JSON.parse(localStorage.getItem("admissions")) || [];
 
-    container.innerHTML = "";
+    if(admissions.length===0){
 
-    if (admissions.length === 0) {
-
-        container.innerHTML =
-            "<p>No admission applications yet.</p>";
+        container.innerHTML="<p>No admission applications found.</p>";
 
         return;
 
     }
 
-    admissions.forEach((student, index) => {
+    let html="";
 
-        container.innerHTML += `
+    admissions.forEach((student,index)=>{
+
+        html += `
 
         <div class="application-card">
 
             <h3>${student.studentName}</h3>
 
-            <p><b>Class:</b> ${student.classApplying}</p>
+            <p><strong>Class:</strong> ${student.classApplying}</p>
 
-            <p><b>Gender:</b> ${student.gender}</p>
+            <p><strong>Date of Birth:</strong> ${student.dateOfBirth}</p>
 
-            <p><b>Date of Birth:</b> ${student.dateOfBirth}</p>
+            <p><strong>Gender:</strong> ${student.gender}</p>
 
-            <p><b>Parent:</b> ${student.parentName}</p>
+            <p><strong>Parent:</strong> ${student.parentName}</p>
 
-            <p><b>Phone:</b> ${student.phone}</p>
+            <p><strong>Phone:</strong> ${student.phone}</p>
 
-            <p><b>Email:</b> ${student.email}</p>
+            <p><strong>Email:</strong> ${student.email}</p>
 
-            <p><b>Previous School:</b> ${student.previousSchool}</p>
+            <p><strong>Previous School:</strong> ${student.previousSchool}</p>
 
-            <p><b>Information:</b> ${student.information}</p>
+            <p><strong>Information:</strong> ${student.information}</p>
 
-            <p><b>Status:</b> ${student.status}</p>
+            <p><strong>Status:</strong> ${student.status}</p>
 
-            <p><b>Submitted:</b> ${student.dateSubmitted}</p>
+            <p><strong>Submitted:</strong> ${student.dateSubmitted}</p>
 
             <button onclick="deleteAdmission(${index})">
                 Delete
@@ -186,18 +192,19 @@ function loadAdmissions() {
 
     });
 
+    container.innerHTML=html;
+
 }
 
 // ======================================
 // DELETE ADMISSION
 // ======================================
 
-function deleteAdmission(index) {
+function deleteAdmission(index){
 
-    let admissions =
-        JSON.parse(localStorage.getItem("admissions")) || [];
+    let admissions=JSON.parse(localStorage.getItem("admissions")) || [];
 
-    admissions.splice(index, 1);
+    admissions.splice(index,1);
 
     localStorage.setItem(
         "admissions",
@@ -205,37 +212,33 @@ function deleteAdmission(index) {
     );
 
     loadAdmissions();
+
     loadStudents();
 
 }
 
 // ======================================
-// LOAD STUDENTS
+// STUDENTS
 // ======================================
 
-function loadStudents() {
+function loadStudents(){
 
-    const list =
-        document.getElementById("studentList");
+    const list=document.getElementById("studentList");
 
-    if (!list) return;
+    if(!list) return;
 
-    const admissions =
-        JSON.parse(localStorage.getItem("admissions")) || [];
+    const admissions=JSON.parse(localStorage.getItem("admissions")) || [];
 
-    list.innerHTML = "";
+    let html="";
 
-    admissions.forEach(student => {
+    admissions.forEach(student=>{
 
-        list.innerHTML += `
+        html += `
 
         <li>
 
             ${student.studentName}
-
-            -
-
-            ${student.classApplying}
+            (${student.classApplying})
 
         </li>
 
@@ -243,108 +246,7 @@ function loadStudents() {
 
     });
 
-}
-
-// ======================================
-// IMAGE UPLOAD
-// ======================================
-
-function addImage() {
-
-    const input =
-        document.getElementById("imageUpload");
-
-    if (!input || input.files.length === 0) {
-
-        alert("Please choose an image.");
-
-        return;
-
-    }
-
-    const file = input.files[0];
-
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-
-        let gallery =
-            JSON.parse(localStorage.getItem("gallery")) || [];
-
-        gallery.push(e.target.result);
-
-        localStorage.setItem(
-            "gallery",
-            JSON.stringify(gallery)
-        );
-
-        displayImages();
-
-        input.value = "";
-
-    };
-
-    reader.readAsDataURL(file);
-
-}
-
-// ======================================
-// DISPLAY IMAGES
-// ======================================
-
-function displayImages() {
-
-    const galleryList =
-        document.getElementById("galleryList");
-
-    if (!galleryList) return;
-
-    const gallery =
-        JSON.parse(localStorage.getItem("gallery")) || [];
-
-    galleryList.innerHTML = "";
-
-    gallery.forEach((image, index) => {
-
-        galleryList.innerHTML += `
-
-        <div class="gallery-card">
-
-            <img src="${image}" alt="Gallery Image">
-
-            <br><br>
-
-            <button onclick="deleteImage(${index})">
-
-                Delete
-
-            </button>
-
-        </div>
-
-        `;
-
-    });
-
-}
-
-// ======================================
-// DELETE IMAGE
-// ======================================
-
-function deleteImage(index) {
-
-    let gallery =
-        JSON.parse(localStorage.getItem("gallery")) || [];
-
-    gallery.splice(index, 1);
-
-    localStorage.setItem(
-        "gallery",
-        JSON.stringify(gallery)
-    );
-
-    displayImages();
+    list.innerHTML=html;
 
 }
 
@@ -352,12 +254,12 @@ function deleteImage(index) {
 // LOGOUT
 // ======================================
 
-function logout() {
+function logout(){
 
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("username");
     localStorage.removeItem("role");
 
-    window.location.href = "admin-login.html";
+    window.location.href="admin-login.html";
 
 }
