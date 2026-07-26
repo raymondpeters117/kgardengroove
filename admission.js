@@ -1,127 +1,151 @@
-// ===================================
-// K. GARDEN GROOVE COLLEGE BUDDO
-// ADMISSIONS JAVASCRIPT
-// ===================================
-
-
 // ==========================
 // MOBILE MENU
 // ==========================
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.querySelector(".nav-links");
+const menuToggle =
+document.getElementById("menuToggle");
 
-if (menuBtn && navLinks) {
 
-    menuBtn.addEventListener("click", function () {
+const navLinks =
+document.getElementById("navLinks");
 
-        navLinks.classList.toggle("show");
 
-    });
+if(menuToggle){
+
+menuToggle.onclick=function(){
+
+navLinks.classList.toggle("show");
 
 }
+
+}
+
 
 
 // ==========================
 // ADMISSION FORM
 // ==========================
 
-const admissionForm = document.getElementById("admissionForm");
 
-if (admissionForm) {
+const admissionForm =
+document.getElementById("admissionForm");
 
-    admissionForm.addEventListener("submit", function (e) {
 
-        e.preventDefault();
 
-        // Check all required elements
+if(admissionForm){
 
-        document.getElementById("studentName").value
-document.getElementById("dob").value
-document.getElementById("gender").value
-document.getElementById("parentName").value
-document.getElementById("phone").value
-document.getElementById("email").value
-document.getElementById("classApplying").value
-document.getElementById("previousSchool").value
-document.getElementById("information").value
 
-        if (
-            !studentName ||
-            !dob ||
-            !gender ||
-            !parentName ||
-            !phone ||
-            !email ||
-            !classApplying ||
-            !previousSchool ||
-            !information
-        ) {
+admissionForm.addEventListener(
+"submit",
+function(e){
 
-            console.error("Some form IDs are missing.");
 
-            alert("Form error. Check your HTML IDs.");
+e.preventDefault();
 
-            return;
 
-        }
 
-        // Create admission object
+let admission = {
 
-        const admission = {
 
-            id: Date.now(),
+id: Date.now(),
 
-           document.getElementById("studentName").value
-document.getElementById("dob").value
-document.getElementById("gender").value
-document.getElementById("parentName").value
-document.getElementById("phone").value
-document.getElementById("email").value
-document.getElementById("classApplying").value
-document.getElementById("previousSchool").value
-document.getElementById("information").value            status: "Pending",
 
-            dateSubmitted: new Date().toLocaleString()
+studentName:
+document.getElementById("studentName").value,
 
-        };
 
-        // Get existing admissions
+dateOfBirth:
+document.getElementById("dob").value,
 
-        let admissions = [];
 
-        try {
+gender:
+document.getElementById("gender").value,
 
-            admissions = JSON.parse(localStorage.getItem("admissions")) || [];
 
-        } catch {
+parentName:
+document.getElementById("parentName").value,
 
-            admissions = [];
 
-        }
+phone:
+document.getElementById("phone").value,
 
-        // Save
 
-        admissions.push(admission);
+email:
+document.getElementById("email").value,
 
-        localStorage.setItem(
-            "admissions",
-            JSON.stringify(admissions)
-        );
 
-        console.log("Admission Saved");
+classApplying:
+document.getElementById("classApplying").value,
 
-        console.table(admissions);
 
-        alert("Admission application submitted successfully!");
+previousSchool:
+document.getElementById("previousSchool").value,
 
-        admissionForm.reset();
 
-    });
+information:
+document.getElementById("information").value,
+
+
+status:
+"Pending",
+
+
+dateSubmitted:
+new Date().toLocaleString()
+
+
+};
+
+
+
+// GET OLD DATA
+
+let admissions =
+JSON.parse(
+localStorage.getItem("admissions")
+) || [];
+
+
+
+// ADD NEW APPLICATION
+
+admissions.push(admission);
+
+
+
+// SAVE
+
+localStorage.setItem(
+"admissions",
+JSON.stringify(admissions)
+);
+
+
+
+console.log(
+"Saved Admission:",
+admission
+);
+
+
+
+alert(
+"Application submitted successfully!"
+);
+
+
+
+admissionForm.reset();
+
+
+
+});
+
 
 }
-else {
 
-    console.error("admissionForm not found.");
 
-}
+
+console.log(
+"Admission JS Loaded"
+);
