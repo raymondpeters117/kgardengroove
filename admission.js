@@ -1,3 +1,4 @@
+console.log("Admission JS is working");
 // ==========================
 // MOBILE MENU
 // ==========================
