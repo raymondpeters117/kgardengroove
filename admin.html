@@ -72,34 +72,41 @@ Students
 
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery">
+   <!-- GALLERY -->
 
-        <h2>📸 Gallery Management</h2>
+<section id="gallery">
 
-        <input
-            type="text"
-            id="image"
-            placeholder="Image URL">
+<h2>📸 Gallery Management</h2>
 
-        <button type="button" onclick="addImage()">
-            Add Image
-        </button>
 
-        <div id="galleryList"></div>
+<input
+type="file"
+id="imageUpload"
+accept="image/*">
 
-    </section>
 
+<button type="button" onclick="addImage()">
+Add Image
+</button>
+
+
+<div id="galleryList"></div>
+
+
+</section>
     <!-- ADMISSIONS -->
-    <section id="admissions">
 
-        <h2>📝 Admission Applications</h2>
+<section id="admissions">
 
-        <div id="applications">
-            No applications yet.
-        </div>
+<h2>📝 Admission Applications</h2>
 
-    </section>
+
+<div id="applications">
+
+</div>
+
+
+</section>
 
     <!-- CONTACT MESSAGES -->
     <section id="messages">
@@ -115,22 +122,17 @@ Students
     <!-- STUDENTS -->
     <section id="students">
 
-        <h2>🎓 Student Records</h2>
+        <!-- STUDENTS -->
 
-        <input
-            type="text"
-            id="student"
-            placeholder="Student Name">
+<section id="students">
 
-        <button type="button" onclick="addStudent()">
-            Add Student
-        </button>
+<h2>🎓 Student Records</h2>
 
-        <ul id="studentList"></ul>
 
-    </section>
+<ul id="studentList"></ul>
 
-</div>
+
+</section></div>
 
 <script src="admin.js"></script>
 
