@@ -72,25 +72,15 @@ if (admissionForm) {
 
             id: Date.now(),
 
-            studentName: studentName.value.trim(),
-
-            dateOfBirth: dob.value,
-
-            gender: gender.value,
-
-            parentName: parentName.value.trim(),
-
-            phone: phone.value.trim(),
-
-            email: email.value.trim(),
-
-            classApplying: classApplying.value,
-
-            previousSchool: previousSchool.value.trim(),
-
-            information: information.value.trim(),
-
-            status: "Pending",
+           document.getElementById("studentName").value
+document.getElementById("dob").value
+document.getElementById("gender").value
+document.getElementById("parentName").value
+document.getElementById("phone").value
+document.getElementById("email").value
+document.getElementById("classApplying").value
+document.getElementById("previousSchool").value
+document.getElementById("information").value            status: "Pending",
 
             dateSubmitted: new Date().toLocaleString()
 
