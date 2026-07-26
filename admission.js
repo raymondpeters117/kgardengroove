@@ -1,101 +1,65 @@
-console.log("Admission JS Loaded");
+console.log("Admission JS loaded");
 
 
-const admissionForm = document.getElementById("admissionForm");
+const form = document.getElementById("admissionForm");
 
 
-if(!admissionForm){
+form.addEventListener("submit", function(e){
 
-    console.log("Form not found");
-
-}
-else{
+    e.preventDefault();
 
 
-admissionForm.addEventListener("submit", function(e){
+    let admission = {
+
+        studentName:
+        document.getElementById("studentName").value,
+
+        dob:
+        document.getElementById("dob").value,
+
+        gender:
+        document.getElementById("gender").value,
+
+        parentName:
+        document.getElementById("parentName").value,
+
+        phone:
+        document.getElementById("phone").value,
+
+        email:
+        document.getElementById("email").value,
+
+        classApplying:
+        document.getElementById("classApplying").value,
+
+        previousSchool:
+        document.getElementById("previousSchool").value,
+
+        information:
+        document.getElementById("information").value,
+
+        status:"Pending"
+
+    };
 
 
-e.preventDefault();
+    console.log(admission);
 
 
-console.log("Submit button clicked");
+    let data =
+    JSON.parse(localStorage.getItem("admissions")) || [];
 
 
-
-let admission = {
-
-    id: Date.now(),
-
-    studentName:
-    document.getElementById("studentName").value,
-
-    dateOfBirth:
-    document.getElementById("dob").value,
-
-    gender:
-    document.getElementById("gender").value,
-
-    parentName:
-    document.getElementById("parentName").value,
-
-    phone:
-    document.getElementById("phone").value,
-
-    email:
-    document.getElementById("email").value,
-
-    classApplying:
-    document.getElementById("classApplying").value,
-
-    previousSchool:
-    document.getElementById("previousSchool").value,
-
-    information:
-    document.getElementById("information").value,
-
-    status:"Pending",
-
-    dateSubmitted:
-    new Date().toLocaleString()
-
-};
+    data.push(admission);
 
 
-
-console.log(admission);
-
-
-
-let admissions =
-JSON.parse(localStorage.getItem("admissions")) || [];
+    localStorage.setItem(
+        "admissions",
+        JSON.stringify(data)
+    );
 
 
-
-admissions.push(admission);
-
-
-
-localStorage.setItem(
-"admissions",
-JSON.stringify(admissions)
-);
-
-
-
-console.log(
-"Saved:",
-localStorage.getItem("admissions")
-);
-
-
-
-alert("Application saved successfully");
-
-
-admissionForm.reset();
+    alert("Saved successfully");
 
 
 });
-
-
-}
