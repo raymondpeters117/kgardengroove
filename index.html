@@ -548,19 +548,260 @@ Latest News
 
 <!--================ FOOTER =================-->
 
-<footer>
+<style>
+/* ==========================================
+   SITE FOOTER STYLES
+   ========================================== */
 
-<div class="container">
+.site-footer {
+  background-color: #111827; /* Dark elegant background */
+  color: #d1d5db;
+  font-family: inherit;
+  padding-top: 60px;
+  border-top: 4px solid #1e40af; /* Accent top border */
+}
 
-<h3>K. Garden Groove College Buddo</h3>
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
 
-<p>Destined For Success</p>
+/* Brand Section */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
 
-<p>© 2026 All Rights Reserved.</p>
+.footer-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 4px;
+}
 
-</div>
+.footer-brand h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
 
+.footer-motto {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.footer-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* Headings */
+.footer-heading {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 35px;
+  height: 2px;
+  background-color: #3b82f6; /* Accent line */
+}
+
+/* Links List */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Contact Info List */
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.footer-contact-list i {
+  color: #3b82f6;
+  margin-top: 3px;
+}
+
+.footer-contact-list a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-contact-list a:hover {
+  color: #ffffff;
+}
+
+/* Social Media Buttons */
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-socials a {
+  width: 36px;
+  height: 36px;
+  background-color: #1f2937;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-socials a:hover {
+  background-color: #2563eb;
+  transform: translateY(-3px);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  background-color: #030712;
+  padding: 18px 20px;
+  border-top: 1px solid #1f2937;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+</style>
+<footer class="site-footer">
+  <div class="footer-container">
+    
+    <!-- Column 1: School Info & Motto -->
+    <div class="footer-col footer-about">
+      <div class="footer-brand">
+        <img src="Badge.jpg" alt="K. Garden Groove College Logo" class="footer-logo">
+        <h3>K. GARDEN GROOVE COLLEGE</h3>
+      </div>
+      <p class="footer-motto"><em>"Destined For Success"</em></p>
+      <p class="footer-description">
+        A mixed day and boarding secondary school dedicated to academic excellence, discipline, and moral values in Buddo.
+      </p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Column 2: Quick Navigation -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="academics.html">Academic Departments</a></li>
+        <li><a href="subjects.html">Subjects Offered</a></li>
+        <li><a href="gallery.html">School Gallery</a></li>
+        <li><a href="admissions.html">Admissions & Apply</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Information & Portals -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Portals & Help</h4>
+      <ul class="footer-links">
+        <li><a href="admissions.html">Requirements & Fees</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="admin-login.html">Admin Portal</a></li>
+        <li><a href="#">Student Rules & Regulations</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Direct Contact -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Get in Touch</h4>
+      <ul class="footer-contact-list">
+        <li>
+          <i class="fas fa-map-marker-alt"></i> 
+          <span>Lugala, Kampala, Uganda</span>
+        </li>
+        <li>
+          <i class="fas fa-phone-alt"></i> 
+          <span>
+            <a href="tel:+256774459473">+256 774 459 473</a><br>
+            <a href="tel:+256755671141">+256 755 671 141</a>
+          </span>
+        </li>
+        <li>
+          <i class="fas fa-envelope"></i> 
+          <a href="mailto:info@kgardengroovecollegebuddo.com">info@kgardengroovecollegebuddo.com</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Footer Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <p>&copy; 2026 K. Garden Groove College Buddo. All Rights Reserved.</p>
+    </div>
+  </div>
 </footer>
+
+<!-- FontAwesome icons for social and contact indicators -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <script src="script.js"></script>
 
